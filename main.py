@@ -576,7 +576,7 @@ def battlemap():
   print("#" + screen[100]['display'] + screen[101]['display'] + screen[102]['display'] + screen[103]['display'] + screen[104]['display'] + screen[105]['display'] + screen[106]['display'] + screen[107]['display'] + screen[108]['display'] + screen[109]['display'] + screen[110]['display'] + screen[111]['display'] + screen[112]['display'] + screen[113]['display'] + screen[114]['display'] + screen[115]['display'] + screen[116]['display'] + screen[117]['display'] + screen[118]['display'] + screen[119]['display'] + "#")
   print("#" + screen[120]['display'] + screen[121]['display'] + screen[122]['display'] + screen[123]['display'] + screen[124]['display'] + screen[125]['display'] + screen[126]['display'] + screen[127]['display'] + screen[128]['display'] + screen[129]['display'] + screen[130]['display'] + screen[131]['display'] + screen[132]['display'] + screen[133]['display'] + screen[134]['display'] + screen[135]['display'] + screen[136]['display'] + screen[137]['display'] + screen[138]['display'] + screen[139]['display'] + "#")
   print("#" + screen[140]['display'] + screen[141]['display'] + screen[142]['display'] + screen[143]['display'] + screen[144]['display'] + screen[145]['display'] + screen[146]['display'] + screen[147]['display'] + screen[148]['display'] + screen[149]['display'] + screen[150]['display'] + screen[151]['display'] + screen[152]['display'] + screen[153]['display'] + screen[154]['display'] + screen[155]['display'] + screen[156]['display'] + screen[157]['display'] + screen[158]['display'] + screen[159]['display'] + "#")
-  print("#" + screen[160]['display'] + screen[161]['display'] + screen[162]['display'] + screen[113]['display'] + screen[164]['display'] + screen[165]['display'] + screen[166]['display'] + screen[167]['display'] + screen[168]['display'] + screen[169]['display'] + screen[170]['display'] + screen[171]['display'] + screen[172]['display'] + screen[173]['display'] + screen[174]['display'] + screen[175]['display'] + screen[176]['display'] + screen[177]['display'] + screen[178]['display'] + screen[179]['display'] + "#")
+  print("#" + screen[160]['display'] + screen[161]['display'] + screen[162]['display'] + screen[163]['display'] + screen[164]['display'] + screen[165]['display'] + screen[166]['display'] + screen[167]['display'] + screen[168]['display'] + screen[169]['display'] + screen[170]['display'] + screen[171]['display'] + screen[172]['display'] + screen[173]['display'] + screen[174]['display'] + screen[175]['display'] + screen[176]['display'] + screen[177]['display'] + screen[178]['display'] + screen[179]['display'] + "#")
   print("#" + screen[180]['display'] + screen[181]['display'] + screen[182]['display'] + screen[183]['display'] + screen[184]['display'] + screen[185]['display'] + screen[186]['display'] + screen[187]['display'] + screen[188]['display'] + screen[189]['display'] + screen[190]['display'] + screen[191]['display'] + screen[192]['display'] + screen[193]['display'] + screen[194]['display'] + screen[195]['display'] + screen[196]['display'] + screen[197]['display'] + screen[198]['display'] + screen[199]['display'] + "#")
   print("#" + screen[200]['display'] + screen[201]['display'] + screen[202]['display'] + screen[203]['display'] + screen[204]['display'] + screen[205]['display'] + screen[206]['display'] + screen[207]['display'] + screen[208]['display'] + screen[209]['display'] + screen[210]['display'] + screen[211]['display'] + screen[212]['display'] + screen[213]['display'] + screen[214]['display'] + screen[215]['display'] + screen[216]['display'] + screen[217]['display'] + screen[218]['display'] + screen[219]['display'] + "#")
   print("#" + screen[220]['display'] + screen[221]['display'] + screen[222]['display'] + screen[223]['display'] + screen[224]['display'] + screen[225]['display'] + screen[226]['display'] + screen[227]['display'] + screen[228]['display'] + screen[229]['display'] + screen[230]['display'] + screen[231]['display'] + screen[232]['display'] + screen[233]['display'] + screen[234]['display'] + screen[235]['display'] + screen[236]['display'] + screen[237]['display'] + screen[238]['display'] + screen[239]['display'] + "#")
@@ -1012,7 +1012,7 @@ for x in screen:
 
 
 class E:
-  def __init__(self,ERoom,H,damage,defense,down,ETile,name,Ex,Ey,EXP,ESpeed):
+  def __init__(self,ERoom,H,damage,defense,down,ETile,name,Ex,Ey,XP,ESpeed):
     self.ERoom = ERoom
     self.H = H
     self.damage = damage
@@ -1022,7 +1022,7 @@ class E:
     self.name = name
     self.Ex = Ex
     self.Ey = Ey
-    self.EXP = EXP
+    self.XP = XP
     self.ESpeed = ESpeed
 
 Enemy0 = E(r5,50,10,5,0,110,'the Brute',1,1,10,3)
@@ -1481,60 +1481,63 @@ rooms = {r0:{'type':r0   ,'left':'blank' ,'right':'blank' ,'up':r1      ,'down':
 
 
 
-items = {'Wood Staff':{'equ':'wea','heal':'n','type':'blunt','pow':10,'def':'n','num':1,'wEquiped':'yes','aEquiped':'no','conditions':'n'},
-'Freeze Mist (Scroll)':{'equ':'spe','heal':'n','type':'cold','pow':30,'def':'n','num':1,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Travel Cloak':{'equ':'arm','heal':'n','type':'n','pow':'n','def':10,'num':1,'wEquiped':'no','aEquiped':'yes','conditions':'n'},
-'Food (Small)':{'equ':'n','heal':20,'type':'n','pow':'n','def':'n','num':3,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Lantern':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Crown':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Lava Splash (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Rusty Sword':{'equ':'wea','heal':'n','type':'slash','pow':30,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Explosive Charge':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Leather Armour':{'equ':'arm','heal':'n','type':'n','pow':'n','def':20,'num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'KEY TO CRIMSON CAVES':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num': 0,'wEquiped':'no','aEquiped':'no','conditions':'y'},
-'Map (Crypts)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Pickaxe':{'equ':'wea','heal':'n','type':'slash','pow':40,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Food (Medium)':{'equ':'n','heal':50,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Map (Crimson Caves)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Fire Bolt (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':60,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Mining Gear':{'equ':'arm','heal':'n','type':'n','pow':'n','def':25,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Scorched Chainmail':{'equ':'arm','heal':'n','type':'n','pow':'n','def':35,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Steel Sword':{'equ':'wea','heal':'n','type':'slash','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Tesla Coil (Scroll)':{'equ':'spe','heal':'n','type':'shock','pow':80,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Heal Potion (Small)':{'equ':'n','heal':40,'type':'n','pow':'n','def':'','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Guard Chainmail':{'equ':'arm','heal':'n','type':'n','pow':'n','def':40,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Acid Bullet (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':70,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Web (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':10,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n'},
-'Spores (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':30,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Shroomal Sythe':{'equ':'wea','heal':'n','type':'slash','pow':45,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Food (Large)':{'equ':'n','heal':80,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Heal Potion (Medium)':{'equ':'n','heal':60,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Map (Crossroads)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Half Plate':{'equ':'arm','heal':'n','type':'n','pow':'n','def':50,'num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Lightning Dagger':{'equ':'wea','heal':'n','type':'shock','pow':55,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Vine Wrap (Scroll)':{'equ':'spe','heal':'n','type':'nature','pow':10,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Fireball  (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':100,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Staff of the Magi':{'equ':'wea','heal':'n','type':'blunt','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Grand Crown':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'},
-'Waterfall (Scroll)':{'equ':'spe','heal':'n','type':'water','pow':80,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n'}}
+items = {'Wood Staff':{'equ':'wea','heal':'n','type':'blunt','pow':10,'def':'n','num':1,'wEquiped':'yes','aEquiped':'no','conditions':'n','weight': 0, 'index': 1, 'sEquiped': 'no', 'aoe': ''},
+'Freeze Mist (Scroll)':{'equ':'spe','heal':'n','type':'cold','pow':30,'def':'n','num':1,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'yes', 'aoe': ''},
+'Travel Cloak':{'equ':'arm','heal':'n','type':'n','pow':'n','def':10,'num':1,'wEquiped':'no','aEquiped':'yes','conditions':'n','weight': 0, 'index': 2, 'sEquiped': 'no', 'aoe': ''},
+'Food (Small)':{'equ':'n','heal':20,'type':'n','pow':'n','def':'n','num':3,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Lantern':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Crown':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Lava Splash (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':30,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y'},
+'Rusty Sword':{'equ':'wea','heal':'n','type':'slash','pow':30,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 3, 'sEquiped': 'no', 'aoe': ''},
+'Explosive Charge':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Leather Armour':{'equ':'arm','heal':'n','type':'n','pow':'n','def':20,'num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 0, 'index': 4, 'sEquiped': 'no', 'aoe': ''},
+'KEY TO CRIMSON CAVES':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num': 0,'wEquiped':'no','aEquiped':'no','conditions':'y','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Map (Crypts)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Pickaxe':{'equ':'wea','heal':'n','type':'slash','pow':40,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 2, 'index': 5, 'sEquiped': 'no', 'aoe': ''},
+'Food (Medium)':{'equ':'n','heal':50,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Map (Crimson Caves)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Fire Bolt (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':60,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Mining Gear':{'equ':'arm','heal':'n','type':'n','pow':'n','def':25,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 1, 'index': 6, 'sEquiped': 'no', 'aoe': ''},
+'Scorched Chainmail':{'equ':'arm','heal':'n','type':'n','pow':'n','def':35,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 3, 'index': 7, 'sEquiped': 'no', 'aoe': ''},
+'Steel Sword':{'equ':'wea','heal':'n','type':'slash','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 1, 'index': 8, 'sEquiped': 'no', 'aoe': ''},
+'Tesla Coil (Scroll)':{'equ':'spe','heal':'n','type':'shock','pow':80,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Heal Potion (Small)':{'equ':'n','heal':40,'type':'n','pow':'n','def':'','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Guard Chainmail':{'equ':'arm','heal':'n','type':'n','pow':'n','def':40,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 3, 'index': 9, 'sEquiped': 'no', 'aoe': ''},
+'Acid Bullet (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':70,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Web (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':10,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y'},
+'Spores (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':45,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y'},
+'Shroomal Sythe':{'equ':'wea','heal':'n','type':'acid','pow':45,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 10, 'sEquiped': 'no', 'aoe': ''},
+'Food (Large)':{'equ':'n','heal':80,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Heal Potion (Medium)':{'equ':'n','heal':60,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Map (Crossroads)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Half Plate':{'equ':'arm','heal':'n','type':'n','pow':'n','def':50,'num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 3, 'index': 11, 'sEquiped': 'no', 'aoe': ''},
+'Lightning Dagger':{'equ':'wea','heal':'n','type':'shock','pow':55,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': -2, 'index': 12, 'sEquiped': 'no', 'aoe': ''},
+'Vine Wrap (Scroll)':{'equ':'spe','heal':'n','type':'nature','pow':55,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Fireball (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':70,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y'},
+'Staff of the Magi':{'equ':'wea','heal':'n','type':'blunt','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 13, 'sEquiped': 'no', 'aoe': ''},
+'Grand Crown':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
+'Waterfall (Scroll)':{'equ':'spe','heal':'n','type':'water','pow':80,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''}}
 
 
 
 
 def inv(type):
   if items[type]['num'] != 0:
-    print(type + '  ' + Fore.BLUE +  str(items[type]['num']))
-    if items[type]['wEquiped'] == 'yes' or items[type]['aEquiped'] == 'yes':
+    if items[type]['equ'] == 'wea':
+      print( type + '  '+ str(items[type]['num']) + Fore.BLUE +'   pow: ' + str(items[type]['pow']) + '   weight: ' + str(items[type]['weight']))
+    elif items[type]['equ'] == 'arm':
+      print( type + '  ' +  str(items[type]['num']) + Fore.BLUE +'   def: ' + str(items[type]['def']) + '   weight: ' + str(items[type]['weight']))
+    elif items[type]['equ'] == 'spe':
+      print( type + '  ' +  str(items[type]['num']) + Fore.BLUE +'   pow: ' + str(items[type]['pow']))
+    else:
+      print(type + '  ' +  str(items[type]['num']))
+    if items[type]['wEquiped'] == 'yes' or items[type]['aEquiped'] == 'yes' or items[type]['sEquiped'] == 'yes':
       print(Fore.RED + '    (equiped)')
     print(Fore.GREEN)
 
 
 def halt():
-  z = 0
-  while z == 0:
-    u = input('input [RETURN] to continue\n ')
-    if u == '':
-      z = 1
+  u = input('input any key to continue\n ')
 
 
 def moveP(dir):
@@ -1555,19 +1558,20 @@ def runText():
     print('down is ' + rooms[Player.CRoom]['down']+'\n')
     
   print(Fore.GREEN)
-  print('your current actions are:\nmove\ninventory\ninspect\nequip\n')
+  print('your current actions are:\ncontrols\nmove (wasd)\ninventory (e)\ninspect (f)\nequip (t)\n')
   
   if rooms[Player.CRoom]['item'] != 'blank':
-    print(Fore.RED + 'search' + Fore.GREEN)
+    print(Fore.RED + 'search (q)' + Fore.GREEN)
     
   if rooms[r4]['item'] == 'blank' and rooms[Player.CRoom]['map'] == 'f1':
-    print(Fore.BLUE + 'map')
+    print(Fore.BLUE + 'map (m)')
   elif rooms[r32]['item'] == 'blank' and rooms[Player.CRoom]['map'] == 'f2':
-    print(Fore.BLUE + 'map')
+    print(Fore.BLUE + 'map (m)')
   if rooms[Player.CRoom]['rest'] == 'y':
     print(Fore.YELLOW + 'Rest At Safe Room (r),(one time)')
   if rooms[Player.CRoom]['size'] == 'safe':
     print(Fore.YELLOW + 'Heal with items (h)')
+
 
 
 def prInv():
@@ -1575,11 +1579,14 @@ def prInv():
   print(Fore.RED)
   print('Health:')
   print(Player.H)
-  print(Fore.BLUE+'\nSP: ')
+  print(Fore.BLUE+'SP: ')
   print(Player.SP)
+  print(Fore.WHITE)
+  print('XP: ')
+  print(Player.xp)
   print(Fore.GREEN)
    
-  inv('Wood Staff')
+  inv('Wood Staff')   
   inv('Freeze Mist (Scroll)')
   inv('Travel Cloak')
   inv('Food (Small)')
@@ -1622,45 +1629,213 @@ def search():
 
 
 def equipable():
+  if items['Wood Staff']['num'] != 0:
+    print(Fore.GREEN + '                      (1)')
   inv('Wood Staff')
+  if items['Travel Cloak']['num'] != 0:
+    print(Fore.GREEN + '                      (2)')
   inv('Travel Cloak')
+  if items['Rusty Sword']['num'] != 0:
+    print(Fore.GREEN + '                      (3)')
   inv('Rusty Sword')
+  if items['Leather Armour']['num'] != 0:
+    print(Fore.GREEN + '                      (4)')
   inv('Leather Armour')
+  if items['Pickaxe']['num'] != 0:
+    print(Fore.GREEN + '                      (5)')
   inv('Pickaxe')
+  if items['Mining Gear']['num'] != 0:
+    print(Fore.GREEN + '                      (6)')
   inv('Mining Gear')
+  if items['Scorched Chainmail']['num'] != 0:
+    print(Fore.GREEN + '                      (7)')
   inv('Scorched Chainmail')
+  if items['Steel Sword']['num'] != 0:
+    print(Fore.GREEN + '                      (8)')
   inv('Steel Sword')
+  if items['Guard Chainmail']['num'] != 0:
+    print(Fore.GREEN + '                      (9)')
   inv('Guard Chainmail')
+  if items['Shroomal Sythe']['num'] != 0:
+    print(Fore.GREEN + '                      (10)')
+  inv('Shroomal Sythe')
+  if items['Half Plate']['num'] != 0:
+    print(Fore.GREEN + '                      (11)')
+  inv('Half Plate')
+  if items['Lightning Dagger']['num'] != 0:
+    print(Fore.GREEN + '                      (12)')
+  inv('Lightning Dagger')
+  if items['Staff of the Magi']['num'] != 0:
+    print(Fore.GREEN + '                      (13)')
+  inv('Staff of the Magi')
+
+
+
+def SPequipable():
+  if items['Freeze Mist (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (1)')
+  inv('Freeze Mist (Scroll)')
+  if items['Lava Splash (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (2)')
+  inv('Lava Splash (Scroll)')
+  if items['Fire Bolt (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (3)')
+  inv('Fire Bolt (Scroll)')
+  if items['Tesla Coil (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (4)')
+  inv('Tesla Coil (Scroll)')
+  if items['Acid Bullet (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (5)')
+  inv('Acid Bullet (Scroll)')
+  if items['Web (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (6)')
+  inv('Web (Scroll)')
+  if items['Spores (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (7)')
+  inv('Spores (Scroll)')
+  if items['Vine Wrap (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (8)')
+  inv('Vine Wrap (Scroll)')
+  if items['Fireball (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (9)')
+  inv('Fireball (Scroll)')
+  if items['Waterfall (Scroll)']['num'] != 0:
+    print(Fore.GREEN + '                      (10)')
+  inv('Waterfall (Scroll)')
+
+
 
 
 def spells():
-  if items['Freeze Mist (Scroll)']['num'] == 1:
+  if items['Freeze Mist (Scroll)']['num'] == 1 and 'Freeze Mist (Scroll)' in spList:
     print('Freeze Mist (1)')
-  if items['Lava Splash (Scroll)']['num'] == 1:
+  if items['Lava Splash (Scroll)']['num'] == 1 and 'Lava Splash (Scroll)' in spList:
     print('Lava Splash (2)')
-  if items['Fire Bolt (Scroll)']['num'] == 1:
+  if items['Fire Bolt (Scroll)']['num'] == 1 and 'Fire Bolt (Scroll)' in spList:
     print('Fire Bolt (3)')
-  if items['Tesla Coil (Scroll)']['num'] == 1:
+  if items['Tesla Coil (Scroll)']['num'] == 1 and 'Tesla Coil (Scroll)' in spList:
     print('Tesla Coil (4)')
-  if items['Acid Bullet (Scroll)']['num'] == 1:
+  if items['Acid Bullet (Scroll)']['num'] == 1 and 'Acid Bullet (Scroll)' in spList:
     print('Acid Bullet (5)')
-  if items['Web (Scroll)']['num'] == 1:
+  if items['Web (Scroll)']['num'] == 1 and 'Web (Scroll)' in spList:
     print('Web (6)')
+  if items['Spores (Scroll)']['num'] == 1 and 'Spores (Scroll)' in spList:
+    print('Spores (7)')
+  if items['Vine Wrap (Scroll)']['num'] == 1 and 'Vine Wrap (Scroll)' in spList:
+    print('Vine Wrap (8)')
+  if items['Fireball (Scroll)']['num'] == 1 and 'Fireball (Scroll)' in spList:
+    print('Fireball (9)')
+  if items['Waterfall (Scroll)']['num'] == 1 and 'Waterfall (Scroll)' in spList:
+    print('Waterfall (10)')
 
 
 def heals():
   if items['Food (Small)']['num'] != 0:
-    print('Food (Small)  (1)')
+    print(Fore.GREEN + str(items['Food (Small)']['num']) +Fore.RESET +'   Food (Small)  (1)')
   if items['Food (Medium)']['num'] != 0:
-    print('Food (Medium)  (2)')  
+    print(Fore.GREEN + str(items['Food (Medium)']['num']) +Fore.RESET +'    Food (Medium)  (2)')  
   if items['Food (Large)']['num'] != 0:
-    print('Food (Large)  (3)')  
+    print(Fore.GREEN + str(items['Food (Large)']['num']) +Fore.RESET +'   Food (Large)  (3)')  
   if items['Heal Potion (Small)']['num'] != 0:
-    print('Heal Potion (Small)  (4)')
+    print(Fore.GREEN + str(items['Heal Potion (Small)']['num']) +Fore.RESET +'    Heal Potion (Small)  (4)')
   if items['Heal Potion (Medium)']['num'] != 0:
-    print('Heal Potion (Medium)  (5)')
+    print(Fore.GREEN + str(items['Heal Potion (Medium)']['num']) +Fore.RESET +'   Heal Potion (Medium)  (5)')
 
-
+def playerMove():
+  moves = Player.speed - items[Player.weapon]['weight'] - items[Player.armour]['weight']
+  while moves != 0:
+    com = input('\nDirection (w,a,s,d,wa,wd,sa,sd)\n')
+    if com == 'w':
+      if Player.CTile - 20 <= 0:
+        print('')
+      else:
+        if screen[Player.CTile - 20]['display'] == '  ':
+          screen[Player.CTile]['display'] = '  '
+          Player.CTile -= 20
+          screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+          os.system('cls')
+          print('--Movement Phase--')
+          battlemap()
+    elif com == 's':
+      if Player.CTile + 20 > 400:
+        print('')
+      else:
+        if screen[Player.CTile + 20]['display'] == '  ':
+          screen[Player.CTile]['display'] = '  '
+          Player.CTile += 20
+          screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+          os.system('cls')
+          print('--Movement Phase--')
+          battlemap()             
+    elif com == 'd':
+      if screen[Player.CTile +1]['display'] == '  ':
+        if Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401: 
+          print('')            
+        else:
+          if screen[Player.CTile +1 ]['display'] == '  ':
+            screen[Player.CTile]['display'] = '  '
+            Player.CTile += 1
+            screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+            os.system('cls')
+            print('--Movement Phase--')
+            battlemap()            
+    elif com == 'a':
+      if Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380: 
+        print('')
+      else:
+        if screen[Player.CTile - 1]['display'] == '  ':
+          screen[Player.CTile]['display'] = '  '
+          Player.CTile -= 1
+          screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+          os.system('cls')
+          print('--Movement Phase--')
+          battlemap() 
+    elif com == 'wa' or com == 'aw':
+      if Player.CTile - 20 <= 0 or Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380:
+        print('')
+      else:
+        if screen[Player.CTile - 21]['display'] == '  ':
+          screen[Player.CTile]['display'] = '  '
+          Player.CTile -= 21
+          screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+          os.system('cls')
+          print('--Movement Phase--')
+          battlemap()
+    elif com == 'wd' or com == 'dw':
+      if Player.CTile - 20 <= 0 or Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401:
+        print('')
+      else:
+        if screen[Player.CTile - 19]['display'] == '  ':
+          screen[Player.CTile]['display'] = '  '
+          Player.CTile -= 19
+          screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+          os.system('cls')
+          print('--Movement Phase--')
+          battlemap()
+    elif com == 'sd' or com == 'ds':
+      if Player.CTile + 20 > 400 or Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380:
+        print('')
+      else:
+        if screen[Player.CTile + 21]['display'] == '  ':
+          screen[Player.CTile]['display'] = '  '
+          Player.CTile += 21
+          screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+          os.system('cls')
+          print('--Movement Phase--')
+          battlemap()    
+    elif com == 'sa' or com == 'as':
+      if Player.CTile + 20 > 400 or Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401:
+        print('')
+      else:
+        if screen[Player.CTile + 19]['display'] == '  ':
+          screen[Player.CTile]['display'] = '  '
+          Player.CTile += 19
+          screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+          os.system('cls')
+          print('--Movement Phase--')
+          battlemap()                   
+    
+    moves -= 1
 
 
 
@@ -1671,6 +1846,8 @@ def fight(enemy):
   WebTimer = 0
   screen[Player.CTile]['display'] = '  '
   Player.CTile = 250
+  for n in screen:
+    screen[n]['display'] = '  '
   x = 0
   while x == 0:
     for n in screen:
@@ -1683,100 +1860,7 @@ def fight(enemy):
       screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
     print('--Movement Phase--')
     battlemap()
-    moves = 0
-    while moves != 3:
-      com = input('\nDirection (w,a,s,d,wa,wd,sa,sd)\n')
-      if com == 'w':
-        if Player.CTile - 20 <= 0:
-          print('')
-        else:
-          if screen[Player.CTile - 20]['display'] == '  ':
-            screen[Player.CTile]['display'] = '  '
-            Player.CTile -= 20
-            screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-            os.system('cls')
-            print('--Movement Phase--')
-            battlemap()
-      elif com == 's':
-        if Player.CTile + 20 > 400:
-          print('')
-        else:
-          if screen[Player.CTile + 20]['display'] == '  ':
-            screen[Player.CTile]['display'] = '  '
-            Player.CTile += 20
-            screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-            os.system('cls')
-            print('--Movement Phase--')
-            battlemap()             
-      elif com == 'd':
-        if screen[Player.CTile +1]['display'] == '  ':
-          if Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401: 
-            print('')            
-          else:
-            if screen[Player.CTile +1 ]['display'] == '  ':
-              screen[Player.CTile]['display'] = '  '
-              Player.CTile += 1
-              screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-              os.system('cls')
-              print('--Movement Phase--')
-              battlemap()            
-      elif com == 'a':
-        if Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380: 
-          print('')
-        else:
-          if screen[Player.CTile - 1]['display'] == '  ':
-            screen[Player.CTile]['display'] = '  '
-            Player.CTile -= 1
-            screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-            os.system('cls')
-            print('--Movement Phase--')
-            battlemap() 
-      elif com == 'wa' or com == 'aw':
-        if Player.CTile - 20 <= 0 or Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380:
-          print('')
-        else:
-          if screen[Player.CTile - 21]['display'] == '  ':
-            screen[Player.CTile]['display'] = '  '
-            Player.CTile -= 21
-            screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-            os.system('cls')
-            print('--Movement Phase--')
-            battlemap()
-      elif com == 'wd' or com == 'dw':
-        if Player.CTile - 20 <= 0 or Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401:
-          print('')
-        else:
-          if screen[Player.CTile - 19]['display'] == '  ':
-            screen[Player.CTile]['display'] = '  '
-            Player.CTile -= 19
-            screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-            os.system('cls')
-            print('--Movement Phase--')
-            battlemap()
-      elif com == 'sd' or com == 'ds':
-        if Player.CTile + 20 > 400 or Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380:
-          print('')
-        else:
-          if screen[Player.CTile + 21]['display'] == '  ':
-            screen[Player.CTile]['display'] = '  '
-            Player.CTile += 21
-            screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-            os.system('cls')
-            print('--Movement Phase--')
-            battlemap()    
-      elif com == 'sa' or com == 'as':
-        if Player.CTile + 20 > 400 or Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401:
-          print('')
-        else:
-          if screen[Player.CTile + 19]['display'] == '  ':
-            screen[Player.CTile]['display'] = '  '
-            Player.CTile += 19
-            screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-            os.system('cls')
-            print('--Movement Phase--')
-            battlemap()                   
-      
-      moves += 1
+    playerMove()
     os.system('cls')
     Player.x = screen[Player.CTile]['x']
     Player.y = screen[Player.CTile]['y']
@@ -1798,101 +1882,34 @@ def fight(enemy):
       print('Attack (m)')
     com = input()
     if com == 's':
-      moves = 0
-      while moves != 3:
-        com = input('\nDirection (w,a,s,d,wa,wd,sa,sd)\n')
-        if com == 'w':
-          if Player.CTile - 20 <= 0:
-            print('')
-          else:
-            if screen[Player.CTile - 20]['display'] == '  ':
-              screen[Player.CTile]['display'] = '  '
-              Player.CTile -= 20
-              screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-              os.system('cls')
-              print(Fore.BLUE + '--Player Turn--')
-              battlemap()
-        elif com == 's':
-          if Player.CTile + 20 > 400:
-            print('')
-          else:
-            if screen[Player.CTile + 20]['display'] == '  ':
-              screen[Player.CTile]['display'] = '  '
-              Player.CTile += 20
-              screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-              os.system('cls')
-              print(Fore.BLUE + '--Player Turn--')
-              battlemap()             
-        elif com == 'd':
-          if screen[Player.CTile +1]['display'] == '  ':
-            if Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401: 
-              print('')            
-            else:
-              if screen[Player.CTile +1 ]['display'] == '  ':
-                screen[Player.CTile]['display'] = '  '
-                Player.CTile += 1
-                screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-                os.system('cls')
-                print(Fore.BLUE + '--Player Turn--')
-                battlemap()            
-        elif com == 'a':
-          if Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380: 
-            print('')
-          else:
-            if screen[Player.CTile - 1]['display'] == '  ':
-              screen[Player.CTile]['display'] = '  '
-              Player.CTile -= 1
-              screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-              os.system('cls')
-              print(Fore.BLUE + '--Player Turn--')
-              battlemap() 
-        elif com == 'wa' or com == 'aw':
-          if Player.CTile - 20 <= 0 or Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380:
-            print('')
-          else:
-            if screen[Player.CTile - 21]['display'] == '  ':
-              screen[Player.CTile]['display'] = '  '
-              Player.CTile -= 21
-              screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-              os.system('cls')
-              print(Fore.BLUE + '--Player Turn--')
-              battlemap()
-        elif com == 'wd' or com == 'dw':
-          if Player.CTile - 20 <= 0 or Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401:
-            print('')
-          else:
-            if screen[Player.CTile - 19]['display'] == '  ':
-              screen[Player.CTile]['display'] = '  '
-              Player.CTile -= 19
-              screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-              os.system('cls')
-              print(Fore.BLUE + '--Player Turn--')
-              battlemap()
-        elif com == 'sd' or com == 'ds':
-          if Player.CTile + 20 > 400 or Player.CTile -1 == 0 or Player.CTile -1 == 20 or Player.CTile -1 == 40 or Player.CTile -1 == 60 or Player.CTile -1 == 80 or Player.CTile -1 == 100 or Player.CTile -1 == 120 or Player.CTile -1 == 140 or Player.CTile -1 == 160 or Player.CTile -1 == 180 or Player.CTile -1 == 200 or Player.CTile -1 == 220 or Player.CTile -1 == 240 or Player.CTile -1 == 260 or Player.CTile -1 == 280 or Player.CTile -1 == 300 or Player.CTile -1 == 320 or Player.CTile -1 == 340 or Player.CTile -1 == 360 or Player.CTile -1 == 380:
-            print('')
-          else:
-            if screen[Player.CTile + 21]['display'] == '  ':
-              screen[Player.CTile]['display'] = '  '
-              Player.CTile += 21
-              screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-              os.system('cls')
-              print(Fore.BLUE + '--Player Turn--')
-              battlemap()    
-        elif com == 'sa' or com == 'as':
-          if Player.CTile + 20 > 400 or Player.CTile +1 == 21 or Player.CTile +1 == 41 or Player.CTile +1 == 61 or Player.CTile +1 == 81 or Player.CTile +1 == 101 or Player.CTile +1 == 121 or Player.CTile +1 == 141 or Player.CTile +1 == 161 or Player.CTile +1 == 181 or Player.CTile +1 == 201 or Player.CTile +1 == 221 or Player.CTile +1 == 241 or Player.CTile +1 == 261 or Player.CTile +1 == 281 or Player.CTile +1 == 301 or Player.CTile +1 == 321 or Player.CTile +1 == 341 or Player.CTile +1 == 361 or Player.CTile +1 == 381 or Player.CTile +1 == 401:
-            print('')
-          else:
-            if screen[Player.CTile + 19]['display'] == '  ':
-              screen[Player.CTile]['display'] = '  '
-              Player.CTile += 19
-              screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-              os.system('cls')
-              print(Fore.BLUE + '--Player Turn--')
-              battlemap()
-        moves += 1
+      playerMove()
     elif com == 'm' and Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
       enemy.H -= items[Player.weapon]['pow']
+
+
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy.ETile]['display'] = Fore.LIGHTBLUE_EX + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy.ETile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
       print('Hits for' + str(items[Player.weapon]['pow']))
       halt()
     elif com == 'f':
@@ -1910,37 +1927,103 @@ def fight(enemy):
       print(Fore.GREEN + 'Your spells are:\n')
       spells()
       com = input('\n\nWhich spell do you cast?')
-      if items['Freeze Mist (Scroll)']['num'] == 1 and com == '1' and Player.SP != 0:
+      if items['Freeze Mist (Scroll)']['num'] == 1 and com == '1' and Player.SP != 0  and 'Freeze Mist (Scroll)' in spList:
         enemy.H -= items['Freeze Mist (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.LIGHTWHITE_EX + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
         print('The spell hits for ' + str(items['Freeze Mist (Scroll)']['pow']))
         Player.SP -= 1
         halt()
-      elif items['Lava Splash (Scroll)']['num'] == 1 and com == '2'and Player.SP != 0:
+      elif items['Lava Splash (Scroll)']['num'] == 1 and com == '2'and Player.SP != 0 and 'Lava Splash (Scroll)' in spList:
         enemy.H -= items['Lava Splash (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
         print('The spell hits for ' + str(items['Lava Splash (Scroll)']['pow']))
         Player.SP -= 1
         halt()
-      elif items['Fire Bolt (Scroll)']['num'] == 1 and com == '3'and Player.SP != 0:
+      elif items['Fire Bolt (Scroll)']['num'] == 1 and com == '3'and Player.SP != 0 and 'Fire Bolt (Scroll)' in spList:
         enemy.H -= items['Fire Bolt (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
         print('The spell hits for ' + str(items['Fire Bolt (Scroll)']['pow']))
         Player.SP -= 1
         halt()
-      elif items['Tesla Coil (Scroll)']['num'] == 1 and com == '4'and Player.SP != 0:
+      elif items['Tesla Coil (Scroll)']['num'] == 1 and com == '4'and Player.SP != 0 and 'Tesla Coil (Scroll)' in spList:
         enemy.H -= items['Tesla Coil (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
         print('The spell hits for ' + str(items['Tesla Coil (Scroll)']['pow']))
         Player.SP -= 1
         halt()
-      elif items['Acid Bullet (Scroll)']['num'] == 1 and com == '5'and Player.SP != 0:
+      elif items['Acid Bullet (Scroll)']['num'] == 1 and com == '5'and Player.SP != 0 and 'Acid Bullet (Scroll)' in spList:
         enemy.H -= items['Acid Bullet (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
         print('The spell hits for ' + str(items['Acid Bullet (Scroll)']['pow']))
         Player.SP -= 1
         halt()
-      elif items['Web (Scroll)']['num'] == 1 and com == '6'and Player.SP != 0:
+      elif items['Web (Scroll)']['num'] == 1 and com == '6'and Player.SP != 0 and 'Web (Scroll)' in spList:
         enemy.H -= items['Web (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
         print('The spell hits for ' + str(items['Web (Scroll)']['pow']) + ' and the enemy has been stuck for 3 turns!')
-        WebTimer = 3
+        WebTimer = 4
         Player.SP -= 1
         halt()
+      elif items['Spores (Scroll)']['num'] == 1 and com == '7'and Player.SP != 0 and 'Spores (Scroll)' in spList:
+        enemy.H -= items['Spores (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+        print('The spell hits for ' + str(items['Spores (Scroll)']['pow']))
+        Player.SP -= 1
+        halt()
+      elif items['Vine Wrap (Scroll)']['num'] == 1 and com == '8'and Player.SP != 0 and 'Vine Wrap (Scroll)' in spList:
+        enemy.H -= items['Vine Wrap (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.LIGHTGREEN_EX + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+        print('The spell hits for ' + str(items['Vine Wrap (Scroll)']['pow'])+ ' and the enemy has been grappled for 1 turn!')
+        WebTimer = 2
+        Player.SP -= 1
+        halt()
+      elif items['Fireball (Scroll)']['num'] == 1 and com == '9'and Player.SP != 0 and 'Fireball (Scroll)' in spList:
+        enemy.H -= items['Fireball (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+        print('The spell hits for ' + str(items['Fireball (Scroll)']['pow']))
+        Player.SP -= 1
+        halt()
+      elif items['Waterfall (Scroll)']['num'] == 1 and com == '10'and Player.SP != 0 and 'Waterfall (Scroll)' in spList:
+        enemy.H -= items['Waterfall (Scroll)']['pow']
+        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+        print('The spell hits for ' + str(items['Waterfall (Scroll)']['pow']))
+        Player.SP -= 1
+        halt()
+
+
+
+
+
       else:
         print('Not an option')
         halt()         
@@ -2157,9 +2240,9 @@ def enc(enemy):
   print('You encountered '+Fore.RED + enemy.name)
   x = 0
   while x == 0:
-    com = input('What action:'+Fore.BLUE+' \nRun\n'+Fore.RED+'Fight'+Fore.RESET+'\n\n')
+    com = input('What action:'+Fore.BLUE+' \nRun (r)\n'+Fore.RED+'Fight  (f)'+Fore.RESET+'\n\n')
 
-    if com == ('Run'):
+    if com == 'Run' or com == 'r':
       r = random.randint(1,6)
       if r != 6:
         Player.CRoom = Player.PreRoom
@@ -2172,17 +2255,17 @@ def enc(enemy):
         os.system('cls')
         fight(enemy)
         x = 1
-    elif com == 'Fight':
+    elif com == 'Fight' or com == 'f':
       os.system('cls')
       fight(enemy)
       x = 1
     else:
      print('not an option')
      os.system('cls')
-
-
+ 
+spList = ['Freeze Mist (Scroll)']
 class P:
-  def __init__(self,CRoom,H,weapon,armour,PreRoom,CTile,SP,x,y):
+  def __init__(self,CRoom,H,weapon,armour,PreRoom,CTile,SP,x,y,speed,xp,level,maxH,spellSL,spellList):
     self.CRoom = CRoom
     self.H = H
     self.weapon = weapon
@@ -2192,9 +2275,15 @@ class P:
     self.SP = SP
     self.x = x
     self.y = y
-Player = P(r0,100,'Wood Staff','Travel Cloak',r0,250,3,1,1)
+    self.speed = speed
+    self.xp = xp
+    self.level = level
+    self.maxH = maxH
+    self.spellSL =spellSL
+    self.spellList = spellList
+Player = P(r0,100,'Wood Staff','Travel Cloak',r0,250,3,1,1,3,0,1,100,3,spList)
 print(Fore.BLUE)
-print('Welcome to the game,   controls are:\n w a s d   for movement,\ne   for inventory,\nq   for search,\nf   for inspect,\nm   for map (if you have one in the area)\nt    for equip (then the name of the item, which is case sensitive)    ')
+print('Welcome to the game,   controls are:\n w a s d   for movement,\ne   for inventory,\nq   for search,\nf   for inspect,\nm   for map (if you have one in the area)\nt    for equip (then the index number)    ')
 print('\nIf you forget any controls, you can also spell out the action you want to take')
 halt()
 print(Fore.RESET)
@@ -2311,38 +2400,151 @@ while y == 0:
     elif com == 'equip' or com ==  't':
       print(Fore.GREEN)
       os.system('cls')
-      equipable()
-      com2 = input('What item would you like to equip?    ')
-      if com2 in items:
-        if items[com2]['num'] != 0:
-          if items[com2]['equ'] == 'wea':
-            items[Player.weapon]['wEquiped'] = 'no'
-            items[com2]['wEquiped'] = 'yes'
-            Player.weapon = com2
-            print('Equiped '+com2)
-            halt()
-            x = 1
-          if items[com2]['equ'] == 'arm':
-            items[Player.armour]['aEquiped'] = 'no'
-            items[com2]['aEquiped'] = 'yes'
-            Player.armour = com2
-            print('Equiped '+com2)
+      com = input('What category?\n\nWeapons + Armours   (1)\n\nSpells   (2)   ')
+      if com == '1':
+        os.system('cls')
+        equipable()
+        com2 = input('What item would you like to equip?    ')
+        if com2 == '1':
+          com2 = 'Wood Staff'
+        if com2 == '2':
+          com2 = 'Travel Cloak'
+        if com2 == '3':
+          com2 = 'Rusty Sword'
+        if com2 == '4':
+          com2 = 'Leather Armour'
+        if com2 == '5':
+          com2 = 'Pickaxe'
+        if com2 == '6':
+          com2 = 'Mining Gear'
+        if com2 == '7':
+          com2 = 'Scorched Chainmail'
+        if com2 == '8':
+          com2 = 'Steel Sword'
+        if com2 == '9':
+          com2 = 'Guard Chainmail'
+        if com2 == '10':
+          com2 = 'Shroomal Sythe'
+        if com2 == '11':
+          com2 = 'Half Plate'
+        if com2 == '12':
+          com2 = 'Lightning Dagger'
+        if com2 == '13':
+          com2 = 'Staff of the Magi'
+
+        if com2 in items:
+          if items[com2]['num'] != 0:
+            if items[com2]['equ'] == 'wea':
+              items[Player.weapon]['wEquiped'] = 'no'
+              items[com2]['wEquiped'] = 'yes'
+              Player.weapon = com2
+              print('Equiped '+com2)
+              halt()
+              x = 1
+            if items[com2]['equ'] == 'arm':
+              items[Player.armour]['aEquiped'] = 'no'
+              items[com2]['aEquiped'] = 'yes'
+              Player.armour = com2
+              print('Equiped '+com2)
+              halt()
+              x = 1
+          else:
+            print('not an option')
             halt()
             x = 1
         else:
           print('not an option')
           halt()
           x = 1
-      else:
-        print('not an option')
-        halt()
-        x = 1
-        
+      elif com == '2':
+        os.system('cls')
+        SPequipable()
+        com2 = input('What item would you like to equip?    ')
+        if com2 == '1':
+          com2 = 'Freeze Mist (Scroll)'
+        if com2 == '2':
+          com2 = 'Lava Splash (Scroll)'
+        if com2 == '3':
+          com2 = 'Fire Bolt (Scroll)'
+        if com2 == '4':
+          com2 = 'Tesla Coil (Scroll)'
+        if com2 == '5':
+          com2 = 'Acid Bullet (Scroll)'
+        if com2 == '6':
+          com2 = 'Web (Scroll)'
+        if com2 == '7':
+          com2 = 'Spores (Scroll)'
+        if com2 == '8':
+          com2 = 'Vine Wrap (Scroll)'
+        if com2 == '9':
+          com2 = 'Fireball (Scroll)'
+        if com2 == '10':
+          com2 = 'Waterfall (Scroll)'
+        if com2 in items:
+          if items[com2]['num'] != 0:
+            if len(spList) < Player.spellSL:
+              if com2 in spList:
+                print('Already equiped')
+                halt()
+                x = 1
+              else:
+                items[com2]['sEquiped'] = 'yes'
+                spList.append(com2)
+                print('Equiped '+com2)
+                halt()
+                x = 1
+            else:
+              print(spList)
+              if len(spList) == 1:
+                print('   (1)')
+              if len(spList) == 2:
+                print('   (1)                       (2)')
+              if len(spList) == 3:
+                print('   (1)                       (2)                       (3)')
+              if len(spList) == 4:
+                print('   (1)                       (2)                       (3)                       (4)')
+
+              com3 = input('\nSpell list full, which item do you want to remove?   ')
+              if com3 == '1':
+                com3 = spList[0]
+              elif com3 == '2' and len(spList) <= 2:
+                com3 = spList[1]
+              elif com3 == '3' and len(spList) <= 3:
+                com3 = spList[2]
+              elif com3 == '4' and len(spList) <= 4:
+                com3 = spList[3]
+
+              if com3 in spList:
+                spList.remove(com3)
+                items[com3]['sEquiped'] = 'no'
+                if com2 in spList:
+                  print('Already equiped')
+                  halt()
+                  x = 1
+                else:
+                  items[com2]['sEquiped'] = 'yes'
+                  spList.append(com2)
+                  print('Equiped '+com2)
+                  halt()
+                  x = 1
+              else:
+                print('not an option')
+                halt()
+                x = 1
+          else:
+            print('not an option')  
+            halt()
+            x = 1
+        else:
+          print('not an option')  
+          halt()
+          x = 1
+
     elif com == 'r' and rooms[Player.CRoom]['rest'] == 'y':
       rooms[Player.CRoom]['rest'] = 'n'
       print('Health and SP restored')
-      Player.SP = 3
-      Player.H = 100
+      Player.SP = Player.spellSL
+      Player.H = Player.maxH
       halt()
       x = 1
     elif com == 'h' and rooms[Player.CRoom]['size'] == 'safe':
@@ -2351,8 +2553,8 @@ while y == 0:
       if com == '1' and items['Food (Small)']['num'] > 0:
         items['Food (Small)']['num'] -= 1
         Player.H += items['Food (Small)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
+        if Player.H >= Player.maxH:
+          Player.H = Player.maxH
           print(Fore.GREEN + 'Healed to full!')
           halt()
         else:
@@ -2361,8 +2563,8 @@ while y == 0:
       elif com == '2':
         items['Food (Medium)']['num'] -= 1
         Player.H += items['Food (Medium)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
+        if Player.H >= Player.maxH:
+          Player.H = Player.maxH
           print(Fore.GREEN + 'Healed to full!')
         else:
           print('Healed ' + str(items['Food (Medium)']['heal']))
@@ -2370,8 +2572,8 @@ while y == 0:
       elif com == '3':
         items['Food (Large)']['num'] -= 1
         Player.H += items['Food (Large)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
+        if Player.H >= Player.maxH:
+          Player.H = Player.maxH
           print(Fore.GREEN + 'Healed to full!')
         else:
           print('Healed ' + str(items['Food (Large)']['heal']))
@@ -2379,8 +2581,8 @@ while y == 0:
       elif com == '4':
         items['Heal Potion (Small)']['num'] -= 1
         Player.H += items['Heal Potion (Small)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
+        if Player.H >= Player.maxH:
+          Player.H = Player.maxH
           print(Fore.GREEN + 'Healed to full!')
         else:
           print('Healed ' + str(items['Heal Potion (Small)']['heal']))
@@ -2388,8 +2590,8 @@ while y == 0:
       elif com == '5':
         items['Heal Potion (Medium)']['num'] -= 1
         Player.H += items['Heal Potion (Medium)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
+        if Player.H >= Player.maxH:
+          Player.H = Player.maxH
           print(Fore.GREEN + 'Healed to full!')
         else:
           print('Healed ' + str(items['Heal Potion (Medium)']['heal']))
@@ -2400,7 +2602,8 @@ while y == 0:
       x = 1
 
 
-
+    elif com == 'controls':
+      print('controls are:\n w a s d   for movement,\ne   for inventory,\nq   for search,\nf   for inspect,\nm   for map (if you have one in the area)\nt    for equip (then the name of the item, which is case sensitive)    ')
 
 
     else:
@@ -2416,26 +2619,96 @@ while y == 0:
  
   if Player.CRoom == Enemy0.ERoom and Enemy0.down == 0:
     enc(Enemy0)
+    Player.xp  += Enemy0.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy0.XP) + 'XP points!')
   if Player.CRoom == Enemy1.ERoom and Enemy1.down == 0:
     enc(Enemy1)  
+    Player.xp  += Enemy1.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy1.XP) + 'XP points!')
   if Player.CRoom == Enemy2.ERoom and Enemy2.down == 0:
     enc(Enemy2)  
+    Player.xp  += Enemy2.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy2.XP) + 'XP points!')
   if Player.CRoom == Enemy3.ERoom and Enemy3.down == 0:
     enc(Enemy3)  
+    Player.xp  += Enemy3.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy3.XP) + 'XP points!')
   if Player.CRoom == Enemy4.ERoom and Enemy4.down == 0:
     enc(Enemy4)  
+    Player.xp  += Enemy4.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy4.XP) + 'XP points!')
   if Player.CRoom == Enemy5.ERoom and Enemy5.down == 0:
     enc(Enemy5)  
+    Player.xp  += Enemy5.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy5.XP) + 'XP points!')
   if Player.CRoom == Enemy6.ERoom and Enemy6.down == 0:
     enc(Enemy6)  
+    Player.xp  += Enemy6.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy6.XP) + 'XP points!')
   if Player.CRoom == Enemy7.ERoom and Enemy7.down == 0:
     enc(Enemy7)  
+    Player.xp  += Enemy7.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy7.XP) + 'XP points!')
   if Player.CRoom == Enemy8.ERoom and Enemy8.down == 0:
     enc(Enemy8)  
+    Player.xp  += Enemy8.XP
+    os.system('cls')
+    print('Gained ' + str(Enemy8.XP) + 'XP points!')
   if Player.CRoom == Sen1.ERoom and Sen1.down == 0:
     enc(Sen1) 
+    Player.xp  += Sen1.XP
+    os.system('cls')
+    print('Gained ' + str(Sen1.XP) + 'XP points!')
   if Player.CRoom == Sen2.ERoom and Sen2.down == 0:
     enc(Sen2) 
+    Player.xp  += Sen2.XP
+    os.system('cls')
+    print('Gained ' + str(Sen2.XP) + 'XP points!')
+
+
+
+
+
+
+
+  if Player.xp >= 40 and Player.level < 2:
+    print('You leveled up to LVL 2!\nHP increases by 20')
+    Player.level = 2
+    Player.maxH += 20
+    Player.H += 20
+  if Player.xp >= 130 and Player.level < 3:
+    print('You leveled up to LVL 3!\nHP increases by 20   and   Gain 1 Max SP')
+    Player.level = 3
+    Player.maxH += 20
+    Player.H += 20
+    Player.spellSL += 1
+    Player.SP += 1    
+  if Player.xp >= 300 and Player.level < 4:
+    print('You leveled up to LVL 4!\nHP increases by 20')
+    Player.level = 4
+    Player.maxH += 20
+    Player.H += 20
+  if Player.xp >= 400 and Player.level < 5:
+    print('You leveled up to LVL 5!\nHP increases by 20   and   Gain 1 Base Speed')
+    Player.level = 5
+    Player.maxH += 20
+    Player.H += 20
+    Player.speed += 1
+
+
+
+
+
+
+
 
   if items['Lantern']['num'] == 1 and items['Explosive Charge']['num'] == 1:
     items['KEY TO CRIMSON CAVES']['conditions'] = 'n'
