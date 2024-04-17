@@ -485,7 +485,7 @@ class Node():
         self.f = 0
     def __eq__(self, other):
         return self.position == other.position
-def astar(maze, start, end, enemy):
+def astar(maze, start, end, enemy, type, enemy2):
     """Returns a list of tuples as a path from the given start to the given end in the given maze"""
     # Create start and end node
     start_node = Node(None, start)
@@ -538,6 +538,8 @@ def astar(maze, start, end, enemy):
           # Make sure walkable terrain
           if maze[node_position[0]][node_position[1]] != 0:
               continue
+          if type == 2:
+            if maze
           # Create new node
           new_node = Node(current_node, node_position)
           # Append
@@ -1012,12 +1014,13 @@ for x in screen:
 
 
 class E:
-  def __init__(self,ERoom,H,damage,defense,down,ETile,name,Ex,Ey,XP,ESpeed):
+  def __init__(self,FType,ERoom,H,damage,defense,down,ETile,name,Ex,Ey,XP,ESpeed):
+    self.FType = FType
     self.ERoom = ERoom
     self.H = H
     self.damage = damage
     self.defense = defense
-    self.down = down
+    self.down= down
     self.ETile = ETile
     self.name = name
     self.Ex = Ex
@@ -1025,17 +1028,19 @@ class E:
     self.XP = XP
     self.ESpeed = ESpeed
 
-Enemy0 = E(r5,50,10,5,0,110,'the Brute',1,1,10,3)
-Enemy1 = E(r24,70,15,10,0,150,'the Gravedigger',1,1,30,2)
-Enemy2 = E(r35,80,15,10,0,150,'the Ash Wisp',1,1,20,5)
-Enemy3 = E(r29,80,15,10,0,150,'the Ash Wisp',1,1,20,5)
-Enemy4 = E(r46,100,30,40,0,150,'the Scorched Knight',1,1,50,3)
-Enemy5 = E(r50,100,25,35,0,150,'the Guard',1,1,35,5)
-Enemy6 = E(r55,100,25,35,0,150,'the Guard',1,1,35,5)
-Sen1 =   E(r52,150,50,50,0,150,'Company Executive Khaan',1,1,100,4)
-Enemy7 = E(r57,70,35,20,0,150,'the Spiderling',1,1,35,8)
-Enemy8 = E(r59,70,35,20,0,150,'the Spiderling',1,1,35,8)
-Sen2 =   E(r60,120,70,30,0,150,'King Arachnid',1,1,100,4)
+
+Enemy0A = E(2,r5,50,10,5,0,110,'the Brute',1,1,10,3)
+Enemy0B = E(2,r5,50,10,5,0,130,'the Brute',1,1,10,3)
+Enemy1 = E(1,r24,90,20,10,0,150,'the Gravedigger',1,1,30,2)
+Enemy2 = E(1,r35,80,15,10,0,150,'the Ash Wisp',1,1,20,5)
+Enemy3 = E(1,r29,80,15,10,0,150,'the Ash Wisp',1,1,20,5)
+Enemy4 = E(1,r46,100,30,40,0,150,'the Scorched Knight',1,1,50,3)
+Enemy5 = E(1,r50,100,25,35,0,150,'the Guard',1,1,35,5)
+Enemy6 = E(1,r55,100,25,35,0,150,'the Guard',1,1,35,5)
+Sen1 =   E(1,r52,150,50,50,0,150,'Company Executive Khaan',1,1,100,4)
+Enemy7 = E(1,r57,70,35,20,0,150,'the Spiderling',1,1,35,8)
+Enemy8 = E(1,r59,70,35,20,0,150,'the Spiderling',1,1,35,8)
+Sen2 =   E(1,r60,120,70,30,0,150,'King Arachnid',1,1,100,4)
 
 
 def bigmapOne():
@@ -1837,12 +1842,115 @@ def playerMove():
     
     moves -= 1
 
+def spellAttack(enemy):
+  if items['Freeze Mist (Scroll)']['num'] == 1 and com == '1' and Player.SP != 0  and 'Freeze Mist (Scroll)' in spList:
+    enemy.H -= items['Freeze Mist (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.LIGHTWHITE_EX + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Freeze Mist (Scroll)']['pow']))
+    Player.SP -= 1
+    halt()
+  elif items['Lava Splash (Scroll)']['num'] == 1 and com == '2'and Player.SP != 0 and 'Lava Splash (Scroll)' in spList:
+    enemy.H -= items['Lava Splash (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Lava Splash (Scroll)']['pow']))
+    Player.SP -= 1
+    halt()
+  elif items['Fire Bolt (Scroll)']['num'] == 1 and com == '3'and Player.SP != 0 and 'Fire Bolt (Scroll)' in spList:
+    enemy.H -= items['Fire Bolt (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Fire Bolt (Scroll)']['pow']))
+    Player.SP -= 1
+    halt()
+  elif items['Tesla Coil (Scroll)']['num'] == 1 and com == '4'and Player.SP != 0 and 'Tesla Coil (Scroll)' in spList:
+    enemy.H -= items['Tesla Coil (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Tesla Coil (Scroll)']['pow']))
+    Player.SP -= 1
+    halt()
+  elif items['Acid Bullet (Scroll)']['num'] == 1 and com == '5'and Player.SP != 0 and 'Acid Bullet (Scroll)' in spList:
+    enemy.H -= items['Acid Bullet (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Acid Bullet (Scroll)']['pow']))
+    Player.SP -= 1
+    halt()
+  elif items['Web (Scroll)']['num'] == 1 and com == '6'and Player.SP != 0 and 'Web (Scroll)' in spList:
+    enemy.H -= items['Web (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Web (Scroll)']['pow']) + ' and the enemy has been stuck for 3 turns!')
+    WebTimer = 4
+    Player.SP -= 1
+    halt()
+  elif items['Spores (Scroll)']['num'] == 1 and com == '7'and Player.SP != 0 and 'Spores (Scroll)' in spList:
+    enemy.H -= items['Spores (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Spores (Scroll)']['pow']))
+    Player.SP -= 1
+    halt()
+  elif items['Vine Wrap (Scroll)']['num'] == 1 and com == '8'and Player.SP != 0 and 'Vine Wrap (Scroll)' in spList:
+    enemy.H -= items['Vine Wrap (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.LIGHTGREEN_EX + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Vine Wrap (Scroll)']['pow'])+ ' and the enemy has been grappled for 1 turn!')
+    WebTimer = 2
+    Player.SP -= 1
+    halt()
+  elif items['Fireball (Scroll)']['num'] == 1 and com == '9'and Player.SP != 0 and 'Fireball (Scroll)' in spList:
+    enemy.H -= items['Fireball (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Fireball (Scroll)']['pow']))
+    Player.SP -= 1
+    halt()
+  elif items['Waterfall (Scroll)']['num'] == 1 and com == '10'and Player.SP != 0 and 'Waterfall (Scroll)' in spList:
+    enemy.H -= items['Waterfall (Scroll)']['pow']
+    screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+    os.system('cls')
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print('The spell hits for ' + str(items['Waterfall (Scroll)']['pow']))
+    Player.SP -= 1
+    halt()
+
+  else:
+    print('Not an option')
+    halt()
 
 
 
 
 
-def fight(enemy):
+
+
+
+
+
+
+def fight1(enemy):
   WebTimer = 0
   screen[Player.CTile]['display'] = '  '
   Player.CTile = 250
@@ -1927,106 +2035,7 @@ def fight(enemy):
       print(Fore.GREEN + 'Your spells are:\n')
       spells()
       com = input('\n\nWhich spell do you cast?')
-      if items['Freeze Mist (Scroll)']['num'] == 1 and com == '1' and Player.SP != 0  and 'Freeze Mist (Scroll)' in spList:
-        enemy.H -= items['Freeze Mist (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.LIGHTWHITE_EX + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Freeze Mist (Scroll)']['pow']))
-        Player.SP -= 1
-        halt()
-      elif items['Lava Splash (Scroll)']['num'] == 1 and com == '2'and Player.SP != 0 and 'Lava Splash (Scroll)' in spList:
-        enemy.H -= items['Lava Splash (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Lava Splash (Scroll)']['pow']))
-        Player.SP -= 1
-        halt()
-      elif items['Fire Bolt (Scroll)']['num'] == 1 and com == '3'and Player.SP != 0 and 'Fire Bolt (Scroll)' in spList:
-        enemy.H -= items['Fire Bolt (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Fire Bolt (Scroll)']['pow']))
-        Player.SP -= 1
-        halt()
-      elif items['Tesla Coil (Scroll)']['num'] == 1 and com == '4'and Player.SP != 0 and 'Tesla Coil (Scroll)' in spList:
-        enemy.H -= items['Tesla Coil (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Tesla Coil (Scroll)']['pow']))
-        Player.SP -= 1
-        halt()
-      elif items['Acid Bullet (Scroll)']['num'] == 1 and com == '5'and Player.SP != 0 and 'Acid Bullet (Scroll)' in spList:
-        enemy.H -= items['Acid Bullet (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Acid Bullet (Scroll)']['pow']))
-        Player.SP -= 1
-        halt()
-      elif items['Web (Scroll)']['num'] == 1 and com == '6'and Player.SP != 0 and 'Web (Scroll)' in spList:
-        enemy.H -= items['Web (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Web (Scroll)']['pow']) + ' and the enemy has been stuck for 3 turns!')
-        WebTimer = 4
-        Player.SP -= 1
-        halt()
-      elif items['Spores (Scroll)']['num'] == 1 and com == '7'and Player.SP != 0 and 'Spores (Scroll)' in spList:
-        enemy.H -= items['Spores (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Spores (Scroll)']['pow']))
-        Player.SP -= 1
-        halt()
-      elif items['Vine Wrap (Scroll)']['num'] == 1 and com == '8'and Player.SP != 0 and 'Vine Wrap (Scroll)' in spList:
-        enemy.H -= items['Vine Wrap (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.LIGHTGREEN_EX + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Vine Wrap (Scroll)']['pow'])+ ' and the enemy has been grappled for 1 turn!')
-        WebTimer = 2
-        Player.SP -= 1
-        halt()
-      elif items['Fireball (Scroll)']['num'] == 1 and com == '9'and Player.SP != 0 and 'Fireball (Scroll)' in spList:
-        enemy.H -= items['Fireball (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Fireball (Scroll)']['pow']))
-        Player.SP -= 1
-        halt()
-      elif items['Waterfall (Scroll)']['num'] == 1 and com == '10'and Player.SP != 0 and 'Waterfall (Scroll)' in spList:
-        enemy.H -= items['Waterfall (Scroll)']['pow']
-        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
-        os.system('cls')
-        print(Fore.BLUE + '--Player Turn--')
-        battlemap()
-        print('The spell hits for ' + str(items['Waterfall (Scroll)']['pow']))
-        Player.SP -= 1
-        halt()
-
-
-
-
-
-      else:
-        print('Not an option')
-        halt()         
+      spellAttack(enemy)
     elif com == 'e':
       heals()
       com = input()
@@ -2098,7 +2107,7 @@ def fight(enemy):
             s = 0
           else:
             screen[enemy.ETile]['display'] = '  '
-            astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy)
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy, 1)
           s -= 1  
         screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
         os.system('cls')
@@ -2123,8 +2132,315 @@ def fight(enemy):
       print('You Died!')
       halt()
       x = 1
-    
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def fight2(enemy,enemy2):
+  WebTimer1 = 0
+  WebTimer2 = 0
+  screen[Player.CTile]['display'] = '  '
+  Player.CTile = 250
+  for n in screen:
+    screen[n]['display'] = '  '
+  x = 0
+  while x == 0:
+    for n in screen:
+      if rooms[Player.CRoom]['bmap'][screen[n]['y']][screen[n]['x']] == 1:
+        screen[n]['display'] = '##'
+    screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+    if WebTimer1 != 0:
+      screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+    if WebTimer2 != 0:
+      screen[enemy2.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+    else:
+      screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+      screen[enemy2.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+    print('--Movement Phase--')
+    battlemap()
+    playerMove()
+    os.system('cls')
+    Player.x = screen[Player.CTile]['x']
+    Player.y = screen[Player.CTile]['y']
+    enemy.Ex = screen[enemy.ETile]['x']
+    enemy.Ey = screen[enemy.ETile]['y']
+    enemy2.Ex = screen[enemy2.ETile]['x']
+    enemy2.Ey = screen[enemy2.ETile]['y']
+    screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+    if WebTimer1 != 0:
+      screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+    else:
+      screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+    if WebTimer2 != 0:
+      screen[enemy2.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+    else:
+      screen[enemy2.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print(Fore.RED + 'Player Health = ' + str(Player.H) )
+    print(Fore.BLUE + 'Player SP = ' + str(Player.SP) + Fore.RESET)
+    print(Fore.RED + '\nEnemy 1 Health = ' + str(enemy.H))
+    print(Fore.RED + '\nEnemy 2 Health = ' + str(enemy2.H))
+    print(Fore.RESET + '\n\n\n')
+    print('Your turn, options are:\n'+Fore.BLUE+'Flee (f)\nSpell (q)\nItem (e)\nSprint (s)')
+    if  Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+      print('Attack Enemy 1 (m1)')
+    if  Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+      print('Attack Enemy 2 (m1)')
+    com = input()
+
+
+    if com == 's':
+      playerMove()
+
+
+    elif com == 'm' or 'm1' and Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+      enemy.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy.ETile]['display'] = Fore.LIGHTBLUE_EX + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy.ETile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
+      print('Hits for' + str(items[Player.weapon]['pow']))
+      halt()
+
+
+    elif com == 'm' or 'm2' and Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+      enemy2.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy2.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy2.ETile]['display'] = Fore.LIGHTBLUE_EX + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy2.ETile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy2.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
+      print('Hits for' + str(items[Player.weapon]['pow']))
+      halt()
+
+    elif com == 'f':
+      r = random.randint(1,3)
+      if r == 3:
+        print('Escape Failed!')
+        halt()
+      else:
+        print('Escape Sucessful! Combat ends after Enemy Turn')
+        halt()
+        Player.CRoom = Player.PreRoom
+        x = 1
+
+
+    elif com == 'q':
+      os.system('cls')
+      print(Fore.GREEN + 'Your spells are:\n')
+      spells()
+      com = input('\n\nWhich spell do you cast?')
+      if enemy.down == 0 and enemy2.down == 0: 
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy2  (2)')
+        com2 = input('Which enemy is the target?')
+        if com2 == '1':
+          spellAttack(enemy)
+        elif com2 == '2':
+          spellAttack(enemy2)
+        else:
+          print('Not an option')
+          halt()
+      elif enemy.down == 1:
+        spellAttack(enemy2)
+      else:
+        spellAttack(enemy)
+
+ 
+    elif com == 'e':
+      heals()
+      com = input()
+      if com == '1' and items['Food (Small)']['num'] > 0:
+        items['Food (Small)']['num'] -= 1
+        Player.H += items['Food (Small)']['heal']
+        if Player.H >= 100:
+          Player.H = 100
+          print(Fore.GREEN + 'Healed to full!')
+          halt()
+        else:
+          print('Healed ' + str(items['Food (Small)']['heal']))
+          halt()
+      elif com == '2':
+        items['Food (Medium)']['num'] -= 1
+        Player.H += items['Food (Medium)']['heal']
+        if Player.H >= 100:
+          Player.H = 100
+          print(Fore.GREEN + 'Healed to full!')
+        else:
+          print('Healed ' + str(items['Food (Medium)']['heal']))
+        halt()
+      elif com == '3':
+        items['Food (Large)']['num'] -= 1
+        Player.H += items['Food (Large)']['heal']
+        if Player.H >= 100:
+          Player.H = 100
+          print(Fore.GREEN + 'Healed to full!')
+        else:
+          print('Healed ' + str(items['Food (Large)']['heal']))
+        halt()
+      elif com == '4':
+        items['Heal Potion (Small)']['num'] -= 1
+        Player.H += items['Heal Potion (Small)']['heal']
+        if Player.H >= 100:
+          Player.H = 100
+          print(Fore.GREEN + 'Healed to full!')
+        else:
+          print('Healed ' + str(items['Heal Potion (Small)']['heal']))
+        halt()
+      elif com == '5':
+        items['Heal Potion (Medium)']['num'] -= 1
+        Player.H += items['Heal Potion (Medium)']['heal']
+        if Player.H >= 100:
+          Player.H = 100
+          print(Fore.GREEN + 'Healed to full!')
+        else:
+          print('Healed ' + str(items['Heal Potion (Medium)']['heal']))
+        halt()
+      else:
+        print('not an option')
+        halt()
+    else:
+      print('not an option')
+      halt()
+
+
+    if enemy.H <= 0:
+      os.system('cls')
+      print('Enemy 1 dies!')
+      halt()
+      screen[enemy.ETile]['display'] = '  '
+      enemy.down = 1
+
+    if enemy2.H <= 0:
+      os.system('cls')
+      print('Enemy 2 dies!')
+      halt()
+      screen[enemy2.ETile]['display'] = '  '
+      enemy2.down = 1
+
+    if enemy.down == 1 and enemy2.down == 1:
+      os.system('cls')
+      print('The Enemies are defeated!')
+      halt()
+      x = 1
+
+
+
+    os.system('cls')
+    if WebTimer1 == 0:
+      s = enemy.ESpeed
+      while s >= 1:
+        if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+          s = 0
+        else:
+          screen[enemy.ETile]['display'] = '  '
+          astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy, 2)
+        s -= 1  
+      screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+      os.system('cls')
+    else:
+      print(Fore.WHITE + 'Enemy 1 is stuck!')
+      WebTimer -= 1
+
+    if WebTimer2 == 0:
+      s = enemy2.ESpeed
+      while s >= 1:
+        if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+          s = 0
+        else:
+          screen[enemy2.ETile]['display'] = '  '
+          astar(rooms[Player.CRoom]['bmap'],(screen[enemy2.ETile]['y'],screen[enemy2.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy2, 2)
+        s -= 1  
+      screen[enemy2.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+      os.system('cls')
+    else:
+      print(Fore.WHITE + 'Enemy 2 is stuck!')
+      WebTimer2 -= 1
+
+
+
+    print(Fore.RED + '--ENEMY TURN--')
+    battlemap()
+    if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+      hit = random.randint(1,100)
+      hit -= items[Player.armour]['def']
+      if hit < 1:
+        print(Fore.GREEN + 'Enemy 1 misses!')
+      else:
+        print(Fore.RED + 'Enemy 1 hits for ' + str(enemy.damage))
+        Player.H -= enemy.damage
+      print(Fore.RESET)
+
+    if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+      hit = random.randint(1,100)
+      hit -= items[Player.armour]['def']
+      if hit < 1:
+        print(Fore.GREEN + 'Enemy 2 misses!')
+      else:
+        print(Fore.RED + 'Enemy 2 hits for ' + str(enemy2.damage))
+        Player.H -= enemy2.damage
+      print(Fore.RESET)
+      
+    halt()
+    os.system('cls')
+    if Player.H <= 0:
+      os.system('cls')
+      print('You Died!')
+      halt()
+      x = 1
 
 
 
@@ -2236,7 +2552,7 @@ def resetcolours():
   rooms[r100tr]['mmc'] = Fore.RESET
   
 
-def enc(enemy):
+def enc1(enemy):
   print('You encountered '+Fore.RED + enemy.name)
   x = 0
   while x == 0:
@@ -2253,16 +2569,48 @@ def enc(enemy):
         print('Failed, combat is engaged')
         halt()
         os.system('cls')
-        fight(enemy)
+        fight1(enemy)
         x = 1
     elif com == 'Fight' or com == 'f':
       os.system('cls')
-      fight(enemy)
+      fight1(enemy)
       x = 1
     else:
      print('not an option')
      os.system('cls')
  
+def enc2(enemy,enemy2):
+  print('You encountered '+Fore.RED + enemy.name + ' and ' + enemy2.name)
+  x = 0
+  while x == 0:
+    com = input('What action:'+Fore.BLUE+' \nRun (r)\n'+Fore.RED+'Fight  (f)'+Fore.RESET+'\n\n')
+
+    if com == 'Run' or com == 'r':
+      r = random.randint(1,6)
+      if r != 6:
+        Player.CRoom = Player.PreRoom
+        print('Ran successfuly')
+        halt()
+        x = 1
+      else:
+        print('Failed, combat is engaged')
+        halt()
+        os.system('cls')
+        fight2(enemy, enemy2)
+        x = 1
+    elif com == 'Fight' or com == 'f':
+      os.system('cls')
+      fight2(enemy, enemy2)
+      x = 1
+    else:
+     print('not an option')
+     os.system('cls')
+
+
+
+
+
+
 spList = ['Freeze Mist (Scroll)']
 class P:
   def __init__(self,CRoom,H,weapon,armour,PreRoom,CTile,SP,x,y,speed,xp,level,maxH,spellSL,spellList):
@@ -2295,8 +2643,8 @@ while y == 0:
     break
   resetcolours()
   rooms[Player.CRoom]['mmc'] = Fore.GREEN
-  if Enemy0.down == 0:
-    rooms[Enemy0.ERoom]['mmc'] = Fore.RED
+  if Enemy0A.down == 0:
+    rooms[Enemy0A.ERoom]['mmc'] = Fore.RED
   if Enemy1.down == 0:
     rooms[Enemy1.ERoom]['mmc'] = Fore.RED
   if Enemy2.down == 0:
@@ -2617,58 +2965,58 @@ while y == 0:
 
 
  
-  if Player.CRoom == Enemy0.ERoom and Enemy0.down == 0:
-    enc(Enemy0)
-    Player.xp  += Enemy0.XP
+  if Player.CRoom == Enemy0A.ERoom and Enemy0A.down == 0 and Enemy0B.down == 0:
+    enc2(Enemy0A,Enemy0B)
+    Player.xp  += Enemy0A.XP
     os.system('cls')
-    print('Gained ' + str(Enemy0.XP) + 'XP points!')
+    print('Gained ' + str(Enemy0A.XP) + 'XP points!')
   if Player.CRoom == Enemy1.ERoom and Enemy1.down == 0:
-    enc(Enemy1)  
+    enc1(Enemy1)  
     Player.xp  += Enemy1.XP
     os.system('cls')
     print('Gained ' + str(Enemy1.XP) + 'XP points!')
   if Player.CRoom == Enemy2.ERoom and Enemy2.down == 0:
-    enc(Enemy2)  
+    enc1(Enemy2)  
     Player.xp  += Enemy2.XP
     os.system('cls')
     print('Gained ' + str(Enemy2.XP) + 'XP points!')
   if Player.CRoom == Enemy3.ERoom and Enemy3.down == 0:
-    enc(Enemy3)  
+    enc1(Enemy3)  
     Player.xp  += Enemy3.XP
     os.system('cls')
     print('Gained ' + str(Enemy3.XP) + 'XP points!')
   if Player.CRoom == Enemy4.ERoom and Enemy4.down == 0:
-    enc(Enemy4)  
+    enc1(Enemy4)  
     Player.xp  += Enemy4.XP
     os.system('cls')
     print('Gained ' + str(Enemy4.XP) + 'XP points!')
   if Player.CRoom == Enemy5.ERoom and Enemy5.down == 0:
-    enc(Enemy5)  
+    enc1(Enemy5)  
     Player.xp  += Enemy5.XP
     os.system('cls')
     print('Gained ' + str(Enemy5.XP) + 'XP points!')
   if Player.CRoom == Enemy6.ERoom and Enemy6.down == 0:
-    enc(Enemy6)  
+    enc1(Enemy6)  
     Player.xp  += Enemy6.XP
     os.system('cls')
     print('Gained ' + str(Enemy6.XP) + 'XP points!')
   if Player.CRoom == Enemy7.ERoom and Enemy7.down == 0:
-    enc(Enemy7)  
+    enc1(Enemy7)  
     Player.xp  += Enemy7.XP
     os.system('cls')
     print('Gained ' + str(Enemy7.XP) + 'XP points!')
   if Player.CRoom == Enemy8.ERoom and Enemy8.down == 0:
-    enc(Enemy8)  
+    enc1(Enemy8)  
     Player.xp  += Enemy8.XP
     os.system('cls')
     print('Gained ' + str(Enemy8.XP) + 'XP points!')
   if Player.CRoom == Sen1.ERoom and Sen1.down == 0:
-    enc(Sen1) 
+    enc1(Sen1) 
     Player.xp  += Sen1.XP
     os.system('cls')
     print('Gained ' + str(Sen1.XP) + 'XP points!')
   if Player.CRoom == Sen2.ERoom and Sen2.down == 0:
-    enc(Sen2) 
+    enc1(Sen2) 
     Player.xp  += Sen2.XP
     os.system('cls')
     print('Gained ' + str(Sen2.XP) + 'XP points!')
