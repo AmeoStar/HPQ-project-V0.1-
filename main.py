@@ -4,6 +4,7 @@ import random
   
 
 
+
 r25KeyText = 'y'
 
 
@@ -175,9 +176,9 @@ r59d='The tunnels are winding, and very unnerving. There is a central area in th
 r60d='The lair is exeptionally dark, the clicking noises become deafaning as you enter. Lots of movement just beyond your vision scuttles on the celing.'
 r61d='You cannot see more than a few feet in front of you, even with the lantern.'
 r62d='Ahead is a glowing, blue forrest, that appears almost unnatural and yet not entirely uninviting at the same time.'
-r63d = ' '
-r64d = ' '
-r65d = ' '
+r63d = 'The floor is surprisingly springy, and the blue, unnatural glow illuminates the cave in haunting light. The tree-like mushrooms claw at all surfaces, grasping them with their tendrils. A musky smell permeates the air.'
+r64d = 'As you look at the stream before you, you notice its liquid runs thicker than usual, and effervescent blue colour and thick. Smaller mushrooms cover the floor and walls like moss.'
+r65d = 'A strange stone encampment surrounds you'
 r66d = ' '
 r67d = ' '
 r68d = ' '
@@ -485,7 +486,7 @@ class Node():
         self.f = 0
     def __eq__(self, other):
         return self.position == other.position
-def astar(maze, start, end, enemy, type, enemy2):
+def astar(maze, start, end, enemy, type, enemy2, enemy3, enemy4):
     """Returns a list of tuples as a path from the given start to the given end in the given maze"""
     # Create start and end node
     start_node = Node(None, start)
@@ -539,7 +540,22 @@ def astar(maze, start, end, enemy, type, enemy2):
           if maze[node_position[0]][node_position[1]] != 0:
               continue
           if type == 2:
-            if maze
+            if screen[enemy2.ETile]['x'] == node_position[1] and screen[enemy2.ETile]['y'] == node_position[0]:
+              continue
+          if type == 3:
+            if screen[enemy2.ETile]['x'] == node_position[1] and screen[enemy2.ETile]['y'] == node_position[0]:
+              continue
+            if screen[enemy3.ETile]['x'] == node_position[1] and screen[enemy3.ETile]['y'] == node_position[0]:
+              continue
+          if type == 4:
+            if screen[enemy2.ETile]['x'] == node_position[1] and screen[enemy2.ETile]['y'] == node_position[0]:
+              continue
+            if screen[enemy3.ETile]['x'] == node_position[1] and screen[enemy3.ETile]['y'] == node_position[0]:
+              continue
+            if screen[enemy4.ETile]['x'] == node_position[1] and screen[enemy4.ETile]['y'] == node_position[0]:
+              continue
+
+
           # Create new node
           new_node = Node(current_node, node_position)
           # Append
@@ -593,411 +609,11 @@ def battlemap():
   print("##########################################")
 
 
-screen = {
-   0:{'num':0,'display':'  ','x':0,'y':0,},
-   1:{'num':0,'display':'  ','x':0,'y':0,},
-   2:{'num':0,'display':'  ','x':0,'y':0,},
-   3:{'num':0,'display':'  ','x':0,'y':0,},
-   4:{'num':0,'display':'  ','x':0,'y':0,},
-   5:{'num':0,'display':'  ','x':0,'y':0,},
-   6:{'num':0,'display':'  ','x':0,'y':0,},
-   7:{'num':0,'display':'  ','x':0,'y':0,},
-   8:{'num':0,'display':'  ','x':0,'y':0,},
-   9:{'num':0,'display':'  ','x':0,'y':0,},
-   10:{'num':0,'display':'  ','x':0,'y':0,},
-   11:{'num':0,'display':'  ','x':0,'y':0,},
-   12:{'num':0,'display':'  ','x':0,'y':0,},
-   13:{'num':0,'display':'  ','x':0,'y':0,},
-   14:{'num':0,'display':'  ','x':0,'y':0,},
-   15:{'num':0,'display':'  ','x':0,'y':0,},
-   16:{'num':0,'display':'  ','x':0,'y':0,},
-   17:{'num':0,'display':'  ','x':0,'y':0,},
-   18:{'num':0,'display':'  ','x':0,'y':0,},
-   19:{'num':0,'display':'  ','x':0,'y':0,},
-   20:{'num':0,'display':'  ','x':0,'y':0,},
-   21:{'num':0,'display':'  ','x':0,'y':0,},
-   22:{'num':0,'display':'  ','x':0,'y':0,},
-   23:{'num':0,'display':'  ','x':0,'y':0,},
-   24:{'num':0,'display':'  ','x':0,'y':0,},
-   25:{'num':0,'display':'  ','x':0,'y':0,},
-   26:{'num':0,'display':'  ','x':0,'y':0,},
-   27:{'num':0,'display':'  ','x':0,'y':0,},
-   28:{'num':0,'display':'  ','x':0,'y':0,},
-   29:{'num':0,'display':'  ','x':0,'y':0,},
-   30:{'num':0,'display':'  ','x':0,'y':0,},
-   31:{'num':0,'display':'  ','x':0,'y':0,},
-   32:{'num':0,'display':'  ','x':0,'y':0,},
-   33:{'num':0,'display':'  ','x':0,'y':0,},
-   34:{'num':0,'display':'  ','x':0,'y':0,},
-   35:{'num':0,'display':'  ','x':0,'y':0,},
-   36:{'num':0,'display':'  ','x':0,'y':0,},
-   37:{'num':0,'display':'  ','x':0,'y':0,},
-   38:{'num':0,'display':'  ','x':0,'y':0,},
-   39:{'num':0,'display':'  ','x':0,'y':0,},
-   40:{'num':0,'display':'  ','x':0,'y':0,},
-   41:{'num':0,'display':'  ','x':0,'y':0,},
-   42:{'num':0,'display':'  ','x':0,'y':0,},
-   43:{'num':0,'display':'  ','x':0,'y':0,},
-   44:{'num':0,'display':'  ','x':0,'y':0,},
-   45:{'num':0,'display':'  ','x':0,'y':0,},
-   46:{'num':0,'display':'  ','x':0,'y':0,},
-   47:{'num':0,'display':'  ','x':0,'y':0,},
-   48:{'num':0,'display':'  ','x':0,'y':0,},
-   49:{'num':0,'display':'  ','x':0,'y':0,},
-   50:{'num':0,'display':'  ','x':0,'y':0,},
-   51:{'num':0,'display':'  ','x':0,'y':0,},
-   52:{'num':0,'display':'  ','x':0,'y':0,},
-   53:{'num':0,'display':'  ','x':0,'y':0,},
-   54:{'num':0,'display':'  ','x':0,'y':0,},
-   55:{'num':0,'display':'  ','x':0,'y':0,},
-   56:{'num':0,'display':'  ','x':0,'y':0,},
-   57:{'num':0,'display':'  ','x':0,'y':0,},
-   58:{'num':0,'display':'  ','x':0,'y':0,},
-   59:{'num':0,'display':'  ','x':0,'y':0,},
-   60:{'num':0,'display':'  ','x':0,'y':0,},
-   61:{'num':0,'display':'  ','x':0,'y':0,},
-   62:{'num':0,'display':'  ','x':0,'y':0,},
-   63:{'num':0,'display':'  ','x':0,'y':0,},
-   64:{'num':0,'display':'  ','x':0,'y':0,},
-   65:{'num':0,'display':'  ','x':0,'y':0,},
-   66:{'num':0,'display':'  ','x':0,'y':0,},
-   67:{'num':0,'display':'  ','x':0,'y':0,},
-   68:{'num':0,'display':'  ','x':0,'y':0,},
-   69:{'num':0,'display':'  ','x':0,'y':0,},
-   70:{'num':0,'display':'  ','x':0,'y':0,},
-   71:{'num':0,'display':'  ','x':0,'y':0,},
-   72:{'num':0,'display':'  ','x':0,'y':0,},
-   73:{'num':0,'display':'  ','x':0,'y':0,},
-   74:{'num':0,'display':'  ','x':0,'y':0,},
-   75:{'num':0,'display':'  ','x':0,'y':0,},
-   76:{'num':0,'display':'  ','x':0,'y':0,},
-   77:{'num':0,'display':'  ','x':0,'y':0,},
-   78:{'num':0,'display':'  ','x':0,'y':0,},
-   79:{'num':0,'display':'  ','x':0,'y':0,},
-   80:{'num':0,'display':'  ','x':0,'y':0,},
-   81:{'num':0,'display':'  ','x':0,'y':0,},
-   82:{'num':0,'display':'  ','x':0,'y':0,},
-   83:{'num':0,'display':'  ','x':0,'y':0,},
-   84:{'num':0,'display':'  ','x':0,'y':0,},
-   85:{'num':0,'display':'  ','x':0,'y':0,},
-   86:{'num':0,'display':'  ','x':0,'y':0,},
-   87:{'num':0,'display':'  ','x':0,'y':0,},
-   88:{'num':0,'display':'  ','x':0,'y':0,},
-   89:{'num':0,'display':'  ','x':0,'y':0,},
-   90:{'num':0,'display':'  ','x':0,'y':0,},
-   91:{'num':0,'display':'  ','x':0,'y':0,},
-   92:{'num':0,'display':'  ','x':0,'y':0,},
-   93:{'num':0,'display':'  ','x':0,'y':0,},
-   94:{'num':0,'display':'  ','x':0,'y':0,},
-   95:{'num':0,'display':'  ','x':0,'y':0,},
-   96:{'num':0,'display':'  ','x':0,'y':0,},
-   97:{'num':0,'display':'  ','x':0,'y':0,},
-   98:{'num':0,'display':'  ','x':0,'y':0,},
-   99:{'num':0,'display':'  ','x':0,'y':0,},
-   100:{'num':0,'display':'  ','x':0,'y':0,},
-   101:{'num':0,'display':'  ','x':0,'y':0,},
-   102:{'num':0,'display':'  ','x':0,'y':0,},
-   103:{'num':0,'display':'  ','x':0,'y':0,},
-   104:{'num':0,'display':'  ','x':0,'y':0,},
-   105:{'num':0,'display':'  ','x':0,'y':0,},
-   106:{'num':0,'display':'  ','x':0,'y':0,},
-   107:{'num':0,'display':'  ','x':0,'y':0,},
-   108:{'num':0,'display':'  ','x':0,'y':0,},
-   109:{'num':0,'display':'  ','x':0,'y':0,},
-   110:{'num':0,'display':'  ','x':0,'y':0,},
-   111:{'num':0,'display':'  ','x':0,'y':0,},
-   112:{'num':0,'display':'  ','x':0,'y':0,},
-   113:{'num':0,'display':'  ','x':0,'y':0,},
-   114:{'num':0,'display':'  ','x':0,'y':0,},
-   115:{'num':0,'display':'  ','x':0,'y':0,},
-   116:{'num':0,'display':'  ','x':0,'y':0,},
-   117:{'num':0,'display':'  ','x':0,'y':0,},
-   118:{'num':0,'display':'  ','x':0,'y':0,},
-   119:{'num':0,'display':'  ','x':0,'y':0,},
-   120:{'num':0,'display':'  ','x':0,'y':0,},
-   121:{'num':0,'display':'  ','x':0,'y':0,},
-   122:{'num':0,'display':'  ','x':0,'y':0,},
-   123:{'num':0,'display':'  ','x':0,'y':0,},
-   124:{'num':0,'display':'  ','x':0,'y':0,},
-   125:{'num':0,'display':'  ','x':0,'y':0,},
-   126:{'num':0,'display':'  ','x':0,'y':0,},
-   127:{'num':0,'display':'  ','x':0,'y':0,},
-   128:{'num':0,'display':'  ','x':0,'y':0,},
-   129:{'num':0,'display':'  ','x':0,'y':0,},
-   130:{'num':0,'display':'  ','x':0,'y':0,},
-   131:{'num':0,'display':'  ','x':0,'y':0,},
-   132:{'num':0,'display':'  ','x':0,'y':0,},
-   133:{'num':0,'display':'  ','x':0,'y':0,},
-   134:{'num':0,'display':'  ','x':0,'y':0,},
-   135:{'num':0,'display':'  ','x':0,'y':0,},
-   136:{'num':0,'display':'  ','x':0,'y':0,},
-   137:{'num':0,'display':'  ','x':0,'y':0,},
-   138:{'num':0,'display':'  ','x':0,'y':0,},
-   139:{'num':0,'display':'  ','x':0,'y':0,},
-   140:{'num':0,'display':'  ','x':0,'y':0,},
-   141:{'num':0,'display':'  ','x':0,'y':0,},
-   142:{'num':0,'display':'  ','x':0,'y':0,},
-   143:{'num':0,'display':'  ','x':0,'y':0,},
-   144:{'num':0,'display':'  ','x':0,'y':0,},
-   145:{'num':0,'display':'  ','x':0,'y':0,},
-   146:{'num':0,'display':'  ','x':0,'y':0,},
-   147:{'num':0,'display':'  ','x':0,'y':0,},
-   148:{'num':0,'display':'  ','x':0,'y':0,},
-   149:{'num':0,'display':'  ','x':0,'y':0,},
-   150:{'num':0,'display':'  ','x':0,'y':0,},
-   151:{'num':0,'display':'  ','x':0,'y':0,},
-   152:{'num':0,'display':'  ','x':0,'y':0,},
-   153:{'num':0,'display':'  ','x':0,'y':0,},
-   154:{'num':0,'display':'  ','x':0,'y':0,},
-   155:{'num':0,'display':'  ','x':0,'y':0,},
-   156:{'num':0,'display':'  ','x':0,'y':0,},
-   157:{'num':0,'display':'  ','x':0,'y':0,},
-   158:{'num':0,'display':'  ','x':0,'y':0,},
-   159:{'num':0,'display':'  ','x':0,'y':0,},
-   160:{'num':0,'display':'  ','x':0,'y':0,},
-   161:{'num':0,'display':'  ','x':0,'y':0,},
-   162:{'num':0,'display':'  ','x':0,'y':0,},
-   163:{'num':0,'display':'  ','x':0,'y':0,},
-   164:{'num':0,'display':'  ','x':0,'y':0,},
-   165:{'num':0,'display':'  ','x':0,'y':0,},
-   166:{'num':0,'display':'  ','x':0,'y':0,},
-   167:{'num':0,'display':'  ','x':0,'y':0,},
-   168:{'num':0,'display':'  ','x':0,'y':0,},
-   169:{'num':0,'display':'  ','x':0,'y':0,},
-   170:{'num':0,'display':'  ','x':0,'y':0,},
-   171:{'num':0,'display':'  ','x':0,'y':0,},
-   172:{'num':0,'display':'  ','x':0,'y':0,},
-   173:{'num':0,'display':'  ','x':0,'y':0,},
-   174:{'num':0,'display':'  ','x':0,'y':0,},
-   175:{'num':0,'display':'  ','x':0,'y':0,},
-   176:{'num':0,'display':'  ','x':0,'y':0,},
-   177:{'num':0,'display':'  ','x':0,'y':0,},
-   178:{'num':0,'display':'  ','x':0,'y':0,},
-   179:{'num':0,'display':'  ','x':0,'y':0,},
-   180:{'num':0,'display':'  ','x':0,'y':0,},
-   181:{'num':0,'display':'  ','x':0,'y':0,},
-   182:{'num':0,'display':'  ','x':0,'y':0,},
-   183:{'num':0,'display':'  ','x':0,'y':0,},
-   184:{'num':0,'display':'  ','x':0,'y':0,},
-   185:{'num':0,'display':'  ','x':0,'y':0,},
-   186:{'num':0,'display':'  ','x':0,'y':0,},
-   187:{'num':0,'display':'  ','x':0,'y':0,},
-   188:{'num':0,'display':'  ','x':0,'y':0,},
-   189:{'num':0,'display':'  ','x':0,'y':0,},
-   190:{'num':0,'display':'  ','x':0,'y':0,},
-   191:{'num':0,'display':'  ','x':0,'y':0,},
-   192:{'num':0,'display':'  ','x':0,'y':0,},
-   193:{'num':0,'display':'  ','x':0,'y':0,},
-   194:{'num':0,'display':'  ','x':0,'y':0,},
-   195:{'num':0,'display':'  ','x':0,'y':0,},
-   196:{'num':0,'display':'  ','x':0,'y':0,},
-   197:{'num':0,'display':'  ','x':0,'y':0,},
-   198:{'num':0,'display':'  ','x':0,'y':0,},
-   199:{'num':0,'display':'  ','x':0,'y':0,},
-   200:{'num':0,'display':'  ','x':0,'y':0,},
-   201:{'num':0,'display':'  ','x':0,'y':0,},
-   202:{'num':0,'display':'  ','x':0,'y':0,},
-   203:{'num':0,'display':'  ','x':0,'y':0,},
-   204:{'num':0,'display':'  ','x':0,'y':0,},
-   205:{'num':0,'display':'  ','x':0,'y':0,},
-   206:{'num':0,'display':'  ','x':0,'y':0,},
-   207:{'num':0,'display':'  ','x':0,'y':0,},
-   208:{'num':0,'display':'  ','x':0,'y':0,},
-   209:{'num':0,'display':'  ','x':0,'y':0,},
-   210:{'num':0,'display':'  ','x':0,'y':0,},
-   211:{'num':0,'display':'  ','x':0,'y':0,},
-   212:{'num':0,'display':'  ','x':0,'y':0,},
-   213:{'num':0,'display':'  ','x':0,'y':0,},
-   214:{'num':0,'display':'  ','x':0,'y':0,},
-   215:{'num':0,'display':'  ','x':0,'y':0,},
-   216:{'num':0,'display':'  ','x':0,'y':0,},
-   217:{'num':0,'display':'  ','x':0,'y':0,},
-   218:{'num':0,'display':'  ','x':0,'y':0,},
-   219:{'num':0,'display':'  ','x':0,'y':0,},
-   220:{'num':0,'display':'  ','x':0,'y':0,},
-   221:{'num':0,'display':'  ','x':0,'y':0,},
-   222:{'num':0,'display':'  ','x':0,'y':0,},
-   223:{'num':0,'display':'  ','x':0,'y':0,},
-   224:{'num':0,'display':'  ','x':0,'y':0,},
-   225:{'num':0,'display':'  ','x':0,'y':0,},
-   226:{'num':0,'display':'  ','x':0,'y':0,},
-   227:{'num':0,'display':'  ','x':0,'y':0,},
-   228:{'num':0,'display':'  ','x':0,'y':0,},
-   229:{'num':0,'display':'  ','x':0,'y':0,},
-   230:{'num':0,'display':'  ','x':0,'y':0,},
-   231:{'num':0,'display':'  ','x':0,'y':0,},
-   232:{'num':0,'display':'  ','x':0,'y':0,},
-   233:{'num':0,'display':'  ','x':0,'y':0,},
-   234:{'num':0,'display':'  ','x':0,'y':0,},
-   235:{'num':0,'display':'  ','x':0,'y':0,},
-   236:{'num':0,'display':'  ','x':0,'y':0,},
-   237:{'num':0,'display':'  ','x':0,'y':0,},
-   238:{'num':0,'display':'  ','x':0,'y':0,},
-   239:{'num':0,'display':'  ','x':0,'y':0,},
-   240:{'num':0,'display':'  ','x':0,'y':0,},
-   241:{'num':0,'display':'  ','x':0,'y':0,},
-   242:{'num':0,'display':'  ','x':0,'y':0,},
-   243:{'num':0,'display':'  ','x':0,'y':0,},
-   244:{'num':0,'display':'  ','x':0,'y':0,},
-   245:{'num':0,'display':'  ','x':0,'y':0,},
-   246:{'num':0,'display':'  ','x':0,'y':0,},
-   247:{'num':0,'display':'  ','x':0,'y':0,},
-   248:{'num':0,'display':'  ','x':0,'y':0,},
-   249:{'num':0,'display':'  ','x':0,'y':0,},
-   250:{'num':0,'display':'  ','x':0,'y':0,},
-   251:{'num':0,'display':'  ','x':0,'y':0,},
-   252:{'num':0,'display':'  ','x':0,'y':0,},
-   253:{'num':0,'display':'  ','x':0,'y':0,},
-   254:{'num':0,'display':'  ','x':0,'y':0,},
-   255:{'num':0,'display':'  ','x':0,'y':0,},
-   256:{'num':0,'display':'  ','x':0,'y':0,},
-   257:{'num':0,'display':'  ','x':0,'y':0,},
-   258:{'num':0,'display':'  ','x':0,'y':0,},
-   259:{'num':0,'display':'  ','x':0,'y':0,},
-   260:{'num':0,'display':'  ','x':0,'y':0,},
-   261:{'num':0,'display':'  ','x':0,'y':0,},
-   262:{'num':0,'display':'  ','x':0,'y':0,},
-   263:{'num':0,'display':'  ','x':0,'y':0,},
-   264:{'num':0,'display':'  ','x':0,'y':0,},
-   265:{'num':0,'display':'  ','x':0,'y':0,},
-   266:{'num':0,'display':'  ','x':0,'y':0,},
-   267:{'num':0,'display':'  ','x':0,'y':0,},
-   268:{'num':0,'display':'  ','x':0,'y':0,},
-   269:{'num':0,'display':'  ','x':0,'y':0,},
-   270:{'num':0,'display':'  ','x':0,'y':0,},
-   271:{'num':0,'display':'  ','x':0,'y':0,},
-   272:{'num':0,'display':'  ','x':0,'y':0,},
-   273:{'num':0,'display':'  ','x':0,'y':0,},
-   274:{'num':0,'display':'  ','x':0,'y':0,},
-   275:{'num':0,'display':'  ','x':0,'y':0,},
-   276:{'num':0,'display':'  ','x':0,'y':0,},
-   277:{'num':0,'display':'  ','x':0,'y':0,},
-   278:{'num':0,'display':'  ','x':0,'y':0,},
-   279:{'num':0,'display':'  ','x':0,'y':0,},
-   280:{'num':0,'display':'  ','x':0,'y':0,},
-   281:{'num':0,'display':'  ','x':0,'y':0,},
-   282:{'num':0,'display':'  ','x':0,'y':0,},
-   283:{'num':0,'display':'  ','x':0,'y':0,},
-   284:{'num':0,'display':'  ','x':0,'y':0,},
-   285:{'num':0,'display':'  ','x':0,'y':0,},
-   286:{'num':0,'display':'  ','x':0,'y':0,},
-   287:{'num':0,'display':'  ','x':0,'y':0,},
-   288:{'num':0,'display':'  ','x':0,'y':0,},
-   289:{'num':0,'display':'  ','x':0,'y':0,},
-   290:{'num':0,'display':'  ','x':0,'y':0,},
-   291:{'num':0,'display':'  ','x':0,'y':0,},
-   292:{'num':0,'display':'  ','x':0,'y':0,},
-   293:{'num':0,'display':'  ','x':0,'y':0,},
-   294:{'num':0,'display':'  ','x':0,'y':0,},
-   295:{'num':0,'display':'  ','x':0,'y':0,},
-   296:{'num':0,'display':'  ','x':0,'y':0,},
-   297:{'num':0,'display':'  ','x':0,'y':0,},
-   298:{'num':0,'display':'  ','x':0,'y':0,},
-   299:{'num':0,'display':'  ','x':0,'y':0,},
-   300:{'num':0,'display':'  ','x':0,'y':0,},
-   301:{'num':0,'display':'  ','x':0,'y':0,},
-   302:{'num':0,'display':'  ','x':0,'y':0,},
-   303:{'num':0,'display':'  ','x':0,'y':0,},
-   304:{'num':0,'display':'  ','x':0,'y':0,},
-   305:{'num':0,'display':'  ','x':0,'y':0,},
-   306:{'num':0,'display':'  ','x':0,'y':0,},
-   307:{'num':0,'display':'  ','x':0,'y':0,},
-   308:{'num':0,'display':'  ','x':0,'y':0,},
-   309:{'num':0,'display':'  ','x':0,'y':0,},
-   310:{'num':0,'display':'  ','x':0,'y':0,},
-   311:{'num':0,'display':'  ','x':0,'y':0,},
-   312:{'num':0,'display':'  ','x':0,'y':0,},
-   313:{'num':0,'display':'  ','x':0,'y':0,},
-   314:{'num':0,'display':'  ','x':0,'y':0,},
-   315:{'num':0,'display':'  ','x':0,'y':0,},
-   316:{'num':0,'display':'  ','x':0,'y':0,},
-   317:{'num':0,'display':'  ','x':0,'y':0,},
-   318:{'num':0,'display':'  ','x':0,'y':0,},
-   319:{'num':0,'display':'  ','x':0,'y':0,},
-   320:{'num':0,'display':'  ','x':0,'y':0,},
-   321:{'num':0,'display':'  ','x':0,'y':0,},
-   322:{'num':0,'display':'  ','x':0,'y':0,},
-   323:{'num':0,'display':'  ','x':0,'y':0,},
-   324:{'num':0,'display':'  ','x':0,'y':0,},
-   325:{'num':0,'display':'  ','x':0,'y':0,},
-   326:{'num':0,'display':'  ','x':0,'y':0,},
-   327:{'num':0,'display':'  ','x':0,'y':0,},
-   328:{'num':0,'display':'  ','x':0,'y':0,},
-   329:{'num':0,'display':'  ','x':0,'y':0,},
-   330:{'num':0,'display':'  ','x':0,'y':0,},
-   331:{'num':0,'display':'  ','x':0,'y':0,},
-   332:{'num':0,'display':'  ','x':0,'y':0,},
-   333:{'num':0,'display':'  ','x':0,'y':0,},
-   334:{'num':0,'display':'  ','x':0,'y':0,},
-   335:{'num':0,'display':'  ','x':0,'y':0,},
-   336:{'num':0,'display':'  ','x':0,'y':0,},
-   337:{'num':0,'display':'  ','x':0,'y':0,},
-   338:{'num':0,'display':'  ','x':0,'y':0,},
-   339:{'num':0,'display':'  ','x':0,'y':0,},
-   340:{'num':0,'display':'  ','x':0,'y':0,},
-   341:{'num':0,'display':'  ','x':0,'y':0,},
-   342:{'num':0,'display':'  ','x':0,'y':0,},
-   343:{'num':0,'display':'  ','x':0,'y':0,},
-   344:{'num':0,'display':'  ','x':0,'y':0,},
-   345:{'num':0,'display':'  ','x':0,'y':0,},
-   346:{'num':0,'display':'  ','x':0,'y':0,},
-   347:{'num':0,'display':'  ','x':0,'y':0,},
-   348:{'num':0,'display':'  ','x':0,'y':0,},
-   349:{'num':0,'display':'  ','x':0,'y':0,},
-   350:{'num':0,'display':'  ','x':0,'y':0,},
-   351:{'num':0,'display':'  ','x':0,'y':0,},
-   352:{'num':0,'display':'  ','x':0,'y':0,},
-   353:{'num':0,'display':'  ','x':0,'y':0,},
-   354:{'num':0,'display':'  ','x':0,'y':0,},
-   355:{'num':0,'display':'  ','x':0,'y':0,},
-   356:{'num':0,'display':'  ','x':0,'y':0,},
-   357:{'num':0,'display':'  ','x':0,'y':0,},
-   358:{'num':0,'display':'  ','x':0,'y':0,},
-   359:{'num':0,'display':'  ','x':0,'y':0,},
-   360:{'num':0,'display':'  ','x':0,'y':0,},
-   361:{'num':0,'display':'  ','x':0,'y':0,},
-   362:{'num':0,'display':'  ','x':0,'y':0,},
-   363:{'num':0,'display':'  ','x':0,'y':0,},
-   364:{'num':0,'display':'  ','x':0,'y':0,},
-   365:{'num':0,'display':'  ','x':0,'y':0,},
-   366:{'num':0,'display':'  ','x':0,'y':0,},
-   367:{'num':0,'display':'  ','x':0,'y':0,},
-   368:{'num':0,'display':'  ','x':0,'y':0,},
-   369:{'num':0,'display':'  ','x':0,'y':0,},
-   370:{'num':0,'display':'  ','x':0,'y':0,},
-   371:{'num':0,'display':'  ','x':0,'y':0,},
-   372:{'num':0,'display':'  ','x':0,'y':0,},
-   373:{'num':0,'display':'  ','x':0,'y':0,},
-   374:{'num':0,'display':'  ','x':0,'y':0,},
-   375:{'num':0,'display':'  ','x':0,'y':0,},
-   376:{'num':0,'display':'  ','x':0,'y':0,},
-   377:{'num':0,'display':'  ','x':0,'y':0,},
-   378:{'num':0,'display':'  ','x':0,'y':0,},
-   379:{'num':0,'display':'  ','x':0,'y':0,},
-   380:{'num':0,'display':'  ','x':0,'y':0,},
-   381:{'num':0,'display':'  ','x':0,'y':0,},
-   382:{'num':0,'display':'  ','x':0,'y':0,},
-   383:{'num':0,'display':'  ','x':0,'y':0,},
-   384:{'num':0,'display':'  ','x':0,'y':0,},
-   385:{'num':0,'display':'  ','x':0,'y':0,},
-   386:{'num':0,'display':'  ','x':0,'y':0,},
-   387:{'num':0,'display':'  ','x':0,'y':0,},
-   388:{'num':0,'display':'  ','x':0,'y':0,},
-   389:{'num':0,'display':'  ','x':0,'y':0,},
-   390:{'num':0,'display':'  ','x':0,'y':0,},
-   391:{'num':0,'display':'  ','x':0,'y':0,},
-   392:{'num':0,'display':'  ','x':0,'y':0,},
-   393:{'num':0,'display':'  ','x':0,'y':0,},
-   394:{'num':0,'display':'  ','x':0,'y':0,},
-   395:{'num':0,'display':'  ','x':0,'y':0,},
-   396:{'num':0,'display':'  ','x':0,'y':0,},
-   397:{'num':0,'display':'  ','x':0,'y':0,},
-   398:{'num':0,'display':'  ','x':0,'y':0,},
-   399:{'num':0,'display':'  ','x':0,'y':0,}}
+screen = {}
 
- 
+for i in range (400):
+  screen[i] = {'num':0, 'display':'  ', 'x':0, 'y':0}
 
-#made an oopsie, cba to correct manually so script
 z = 0
 n = 0
 for x in screen:
@@ -1014,7 +630,7 @@ for x in screen:
 
 
 class E:
-  def __init__(self,FType,ERoom,H,damage,defense,down,ETile,name,Ex,Ey,XP,ESpeed):
+  def __init__(self,FType,ERoom,H,damage,defense,down,ETile,name,Ex,Ey,XP,ESpeed,DTXT,STile,WTimer):
     self.FType = FType
     self.ERoom = ERoom
     self.H = H
@@ -1027,21 +643,31 @@ class E:
     self.Ey = Ey
     self.XP = XP
     self.ESpeed = ESpeed
+    self.DTXT = DTXT
+    self.STile = STile
+    self.WTimer = WTimer
 
 
-Enemy0A = E(2,r5,50,10,5,0,110,'the Brute',1,1,10,3)
-Enemy0B = E(2,r5,50,10,5,0,130,'the Brute',1,1,10,3)
-Enemy1 = E(1,r24,90,20,10,0,150,'the Gravedigger',1,1,30,2)
-Enemy2 = E(1,r35,80,15,10,0,150,'the Ash Wisp',1,1,20,5)
-Enemy3 = E(1,r29,80,15,10,0,150,'the Ash Wisp',1,1,20,5)
-Enemy4 = E(1,r46,100,30,40,0,150,'the Scorched Knight',1,1,50,3)
-Enemy5 = E(1,r50,100,25,35,0,150,'the Guard',1,1,35,5)
-Enemy6 = E(1,r55,100,25,35,0,150,'the Guard',1,1,35,5)
-Sen1 =   E(1,r52,150,50,50,0,150,'Company Executive Khaan',1,1,100,4)
-Enemy7 = E(1,r57,70,35,20,0,150,'the Spiderling',1,1,35,8)
-Enemy8 = E(1,r59,70,35,20,0,150,'the Spiderling',1,1,35,8)
-Sen2 =   E(1,r60,120,70,30,0,150,'King Arachnid',1,1,100,4)
-
+Enemy0A = E(2,r5,40,10,5,0,108,'the Brute',1,1,10,3,False,310,0)
+Enemy0B = E(2,r5,40,15,5,0,114,'the Outcast',1,1,10,4,False,310,0)
+Enemy1 = E(1,r24,100,25,10,0,50,'the Gravedigger',1,1,30,2,False,370,0)
+Enemy2A = E(2,r35,80,15,10,0,131,'an Ash Wisp',1,1,20,5,False,190,0)
+Enemy2B = E(2,r35,80,15,10,0,128,'an Ash Wisp',1,1,20,5,False,190,0)
+Enemy3A = E(1,r29,80,15,10,0,106,'an Ash Wisp',1,1,20,5,False,218,0)
+Enemy3B = E(1,r29,80,15,10,0,117,'an Ash Wisp',1,1,20,5,False,218,0)
+Enemy4 = E(1,r46,100,35,45,0,175,'the Scorched Knight',1,1,50,3,False,190,0)
+Enemy5 = E(1,r50,100,25,35,0,291,'the Guard',1,1,35,5,False,185,0)
+Enemy6 = E(1,r55,100,25,35,0,204,'the Guard',1,1,35,5,False,197,0)
+Sen1A =  E(1,r52,150,50,50,0,71,'Warden Kahng',1,1,100,4,False,190,0)
+Sen1B = E(1,r55,60,25,30,0,103,'Company Guard',1,1,35,5,False,197,0)
+Sen1C = E(1,r55,60,25,30,0,136,'Company Guard',1,1,35,5,False,197,0)
+Sen1D = E(1,r55,60,25,30,0,204,'Company Guard',1,1,35,5,False,197,0)
+Enemy6 = E(1,r55,60,25,30,0,204,'the Guard',1,1,35,5,False,197,0)
+Enemy7 = E(1,r57,70,35,20,0,147,'the Spiderling',1,1,35,8,False,213,0)
+Enemy8 = E(1,r59,70,35,20,0,248,'the Spiderling',1,1,35,8,False,252,0)
+Sen2A =   E(1,r60,120,70,30,0,106,'King Arachnid',1,1,100,2,False,272,0)
+Sen2B =   E(1,r60,70,40,30,0,75,'Giant Spider',1,1,100,5,False,272,0)
+Sen2C =   E(1,r60,70,40,30,0,265,'Giant Spider',1,1,100,5,False,272,0)
 
 def bigmapOne():
   print('                                            #:::::::::::::::::#                                            #::::::::::::::::::::::::#                 ')
@@ -1486,42 +1112,42 @@ rooms = {r0:{'type':r0   ,'left':'blank' ,'right':'blank' ,'up':r1      ,'down':
 
 
 
-items = {'Wood Staff':{'equ':'wea','heal':'n','type':'blunt','pow':10,'def':'n','num':1,'wEquiped':'yes','aEquiped':'no','conditions':'n','weight': 0, 'index': 1, 'sEquiped': 'no', 'aoe': ''},
-'Freeze Mist (Scroll)':{'equ':'spe','heal':'n','type':'cold','pow':30,'def':'n','num':1,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'yes', 'aoe': ''},
-'Travel Cloak':{'equ':'arm','heal':'n','type':'n','pow':'n','def':10,'num':1,'wEquiped':'no','aEquiped':'yes','conditions':'n','weight': 0, 'index': 2, 'sEquiped': 'no', 'aoe': ''},
-'Food (Small)':{'equ':'n','heal':20,'type':'n','pow':'n','def':'n','num':3,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Lantern':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Crown':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Lava Splash (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':30,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y'},
-'Rusty Sword':{'equ':'wea','heal':'n','type':'slash','pow':30,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 3, 'sEquiped': 'no', 'aoe': ''},
-'Explosive Charge':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Leather Armour':{'equ':'arm','heal':'n','type':'n','pow':'n','def':20,'num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 0, 'index': 4, 'sEquiped': 'no', 'aoe': ''},
-'KEY TO CRIMSON CAVES':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num': 0,'wEquiped':'no','aEquiped':'no','conditions':'y','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Map (Crypts)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Pickaxe':{'equ':'wea','heal':'n','type':'slash','pow':40,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 2, 'index': 5, 'sEquiped': 'no', 'aoe': ''},
-'Food (Medium)':{'equ':'n','heal':50,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Map (Crimson Caves)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Fire Bolt (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':60,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Mining Gear':{'equ':'arm','heal':'n','type':'n','pow':'n','def':25,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 1, 'index': 6, 'sEquiped': 'no', 'aoe': ''},
-'Scorched Chainmail':{'equ':'arm','heal':'n','type':'n','pow':'n','def':35,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 3, 'index': 7, 'sEquiped': 'no', 'aoe': ''},
-'Steel Sword':{'equ':'wea','heal':'n','type':'slash','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 1, 'index': 8, 'sEquiped': 'no', 'aoe': ''},
-'Tesla Coil (Scroll)':{'equ':'spe','heal':'n','type':'shock','pow':80,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Heal Potion (Small)':{'equ':'n','heal':40,'type':'n','pow':'n','def':'','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Guard Chainmail':{'equ':'arm','heal':'n','type':'n','pow':'n','def':40,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 3, 'index': 9, 'sEquiped': 'no', 'aoe': ''},
-'Acid Bullet (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':70,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Web (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':10,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y'},
-'Spores (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':45,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y'},
-'Shroomal Sythe':{'equ':'wea','heal':'n','type':'acid','pow':45,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 10, 'sEquiped': 'no', 'aoe': ''},
-'Food (Large)':{'equ':'n','heal':80,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Heal Potion (Medium)':{'equ':'n','heal':60,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Map (Crossroads)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Half Plate':{'equ':'arm','heal':'n','type':'n','pow':'n','def':50,'num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 3, 'index': 11, 'sEquiped': 'no', 'aoe': ''},
-'Lightning Dagger':{'equ':'wea','heal':'n','type':'shock','pow':55,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': -2, 'index': 12, 'sEquiped': 'no', 'aoe': ''},
-'Vine Wrap (Scroll)':{'equ':'spe','heal':'n','type':'nature','pow':55,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Fireball (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':70,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y'},
-'Staff of the Magi':{'equ':'wea','heal':'n','type':'blunt','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 13, 'sEquiped': 'no', 'aoe': ''},
-'Grand Crown':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''},
-'Waterfall (Scroll)':{'equ':'spe','heal':'n','type':'water','pow':80,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': ''}}
+items = {'Wood Staff':{'equ':'wea','heal':'n','type':'blunt','pow':10,'def':'n','num':1,'wEquiped':'yes','aEquiped':'no','conditions':'n','weight': 0, 'index': 1, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Freeze Mist (Scroll)':{'equ':'spe','heal':'n','type':'cold','pow':30,'def':'n','num':1,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'yes', 'aoe': '', 'rad': ''},
+'Travel Cloak':{'equ':'arm','heal':'n','type':'n','pow':'n','def':10,'num':1,'wEquiped':'no','aEquiped':'yes','conditions':'n','weight': 0, 'index': 2, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Food (Small)':{'equ':'n','heal':20,'type':'n','pow':'n','def':'n','num':3,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Lantern':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Crown':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Lava Splash (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':30,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y', 'rad': 1},
+'Rusty Sword':{'equ':'wea','heal':'n','type':'slash','pow':30,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 3, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Explosive Charge':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Leather Armour':{'equ':'arm','heal':'n','type':'n','pow':'n','def':20,'num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 0, 'index': 4, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'KEY TO CRIMSON CAVES':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num': 0,'wEquiped':'no','aEquiped':'no','conditions':'y','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Map (Crypts)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Pickaxe':{'equ':'wea','heal':'n','type':'slash','pow':40,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 2, 'index': 5, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Food (Medium)':{'equ':'n','heal':50,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Map (Crimson Caves)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Fire Bolt (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':60,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Mining Gear':{'equ':'arm','heal':'n','type':'n','pow':'n','def':25,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 1, 'index': 6, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Scorched Chainmail':{'equ':'arm','heal':'n','type':'n','pow':'n','def':35,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 3, 'index': 7, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Steel Sword':{'equ':'wea','heal':'n','type':'slash','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 1, 'index': 8, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Tesla Coil (Scroll)':{'equ':'spe','heal':'n','type':'shock','pow':80,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Heal Potion (Small)':{'equ':'n','heal':40,'type':'n','pow':'n','def':'','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Guard Chainmail':{'equ':'arm','heal':'n','type':'n','pow':'n','def':40,'num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': 3, 'index': 9, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Acid Bullet (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':70,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Web (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':10,'def':'n','num':0,'wEquiped':'no','aEquiped':' no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y', 'rad': 1},
+'Spores (Scroll)':{'equ':'spe','heal':'n','type':'acid','pow':45,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y', 'rad': 3},
+'Shroomal Sythe':{'equ':'wea','heal':'n','type':'acid','pow':45,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 10, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Food (Large)':{'equ':'n','heal':80,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Heal Potion (Medium)':{'equ':'n','heal':60,'type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Map (Crossroads)':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Half Plate':{'equ':'arm','heal':'n','type':'n','pow':'n','def':50,'num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 3, 'index': 11, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Lightning Dagger':{'equ':'wea','heal':'n','type':'shock','pow':55,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': -2, 'index': 12, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Vine Wrap (Scroll)':{'equ':'spe','heal':'n','type':'nature','pow':55,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Fireball (Scroll)':{'equ':'spe','heal':'n','type':'fire','pow':70,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': 'y', 'rad': 2},
+'Staff of the Magi':{'equ':'wea','heal':'n','type':'blunt','pow':50,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': 1, 'index': 13, 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Grand Crown':{'equ':'n','heal':'n','type':'n','pow':'n','def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''},
+'Waterfall (Scroll)':{'equ':'spe','heal':'n','type':'water','pow':80,'def':'n','num':0,'wEquiped':'no','aEquiped':'no','conditions':'n','weight': '', 'sEquiped': 'no', 'aoe': '', 'rad': ''}}
 
 
 
@@ -1842,7 +1468,78 @@ def playerMove():
     
     moves -= 1
 
-def spellAttack(enemy):
+def checkProxim(type,enemy,enemy2,enemy3,enemy4,radius,spell,colour):
+  if radius == 1:
+    if type == 2:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+    if type == 3:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile -1 or enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile +20 or enemy.ETile == enemy3.ETile -20 or enemy.ETile == enemy3.ETile +19 or enemy.ETile == enemy3.ETile -19 or enemy.ETile == enemy3.ETile +21 or enemy.ETile == enemy3.ETile -21:
+        enemy3.H -= items[spell]['pow']
+        screen[enemy3.ETile]['display'] = colour + '@@' + Fore.RESET
+    if type == 4:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile -1 or enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile +20 or enemy.ETile == enemy3.ETile -20 or enemy.ETile == enemy3.ETile +19 or enemy.ETile == enemy3.ETile -19 or enemy.ETile == enemy3.ETile +21 or enemy.ETile == enemy3.ETile -21:
+        enemy3.H -= items[spell]['pow']
+        screen[enemy3.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy4.ETile +1 or enemy.ETile == enemy4.ETile -1 or enemy.ETile == enemy4.ETile +1 or enemy.ETile == enemy4.ETile +20 or enemy.ETile == enemy4.ETile -20 or enemy.ETile == enemy4.ETile +19 or enemy.ETile == enemy4.ETile -19 or enemy.ETile == enemy4.ETile +21 or enemy.ETile == enemy4.ETile -21:
+        enemy4.H -= items[spell]['pow']
+        screen[enemy4.ETile]['display'] = colour + '@@' + Fore.RESET
+
+  if radius == 2:
+    if type == 2:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21 or enemy.ETile == enemy2.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy2.ETile +22 or enemy.ETile == enemy2.ETile -22 or enemy.ETile == enemy2.ETile +18 or enemy.ETile == enemy2.ETile -18 or enemy.ETile == enemy2.ETile +40 or enemy.ETile == enemy2.ETile -40 or enemy.ETile == enemy2.ETile +41 or enemy.ETile == enemy2.ETile -41 or enemy.ETile == enemy2.ETile +39 or enemy.ETile == enemy2.ETile -39:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+    if type == 3:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21 or enemy.ETile == enemy2.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy2.ETile +22 or enemy.ETile == enemy2.ETile -22 or enemy.ETile == enemy2.ETile +18 or enemy.ETile == enemy2.ETile -18 or enemy.ETile == enemy2.ETile +40 or enemy.ETile == enemy2.ETile -40 or enemy.ETile == enemy2.ETile +41 or enemy.ETile == enemy2.ETile -41 or enemy.ETile == enemy2.ETile +39 or enemy.ETile == enemy2.ETile -39:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile -1 or enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile +20 or enemy.ETile == enemy3.ETile -20 or enemy.ETile == enemy3.ETile +19 or enemy.ETile == enemy3.ETile -19 or enemy.ETile == enemy3.ETile +21 or enemy.ETile == enemy3.ETile -21 or enemy.ETile == enemy3.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy3.ETile +22 or enemy.ETile == enemy3.ETile -22 or enemy.ETile == enemy3.ETile +18 or enemy.ETile == enemy3.ETile -18 or enemy.ETile == enemy3.ETile +40 or enemy.ETile == enemy3.ETile -40 or enemy.ETile == enemy3.ETile +41 or enemy.ETile == enemy3.ETile -41 or enemy.ETile == enemy3.ETile +39 or enemy.ETile == enemy3.ETile -39:
+        enemy3.H -= items[spell]['pow']
+        screen[enemy3.ETile]['display'] = colour + '@@' + Fore.RESET
+    if type == 4:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21 or enemy.ETile == enemy2.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy2.ETile +22 or enemy.ETile == enemy2.ETile -22 or enemy.ETile == enemy2.ETile +18 or enemy.ETile == enemy2.ETile -18 or enemy.ETile == enemy2.ETile +40 or enemy.ETile == enemy2.ETile -40 or enemy.ETile == enemy2.ETile +41 or enemy.ETile == enemy2.ETile -41 or enemy.ETile == enemy2.ETile +39 or enemy.ETile == enemy2.ETile -39:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile -1 or enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile +20 or enemy.ETile == enemy3.ETile -20 or enemy.ETile == enemy3.ETile +19 or enemy.ETile == enemy3.ETile -19 or enemy.ETile == enemy3.ETile +21 or enemy.ETile == enemy3.ETile -21 or enemy.ETile == enemy3.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy3.ETile +22 or enemy.ETile == enemy3.ETile -22 or enemy.ETile == enemy3.ETile +18 or enemy.ETile == enemy3.ETile -18 or enemy.ETile == enemy3.ETile +40 or enemy.ETile == enemy3.ETile -40 or enemy.ETile == enemy3.ETile +41 or enemy.ETile == enemy3.ETile -41 or enemy.ETile == enemy3.ETile +39 or enemy.ETile == enemy3.ETile -39:
+        enemy3.H -= items[spell]['pow']
+        screen[enemy3.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy4.ETile +1 or enemy.ETile == enemy4.ETile -1 or enemy.ETile == enemy4.ETile +1 or enemy.ETile == enemy4.ETile +20 or enemy.ETile == enemy4.ETile -20 or enemy.ETile == enemy4.ETile +19 or enemy.ETile == enemy4.ETile -19 or enemy.ETile == enemy4.ETile +21 or enemy.ETile == enemy4.ETile -21 or enemy.ETile == enemy4.ETile +2 or enemy.ETile == enemy4.ETile -2 or enemy.ETile == enemy4.ETile +22 or enemy.ETile == enemy4.ETile -22 or enemy.ETile == enemy4.ETile +18 or enemy.ETile == enemy4.ETile -18 or enemy.ETile == enemy4.ETile +40 or enemy.ETile == enemy4.ETile -40 or enemy.ETile == enemy4.ETile +41 or enemy.ETile == enemy4.ETile -41 or enemy.ETile == enemy4.ETile +39 or enemy.ETile == enemy4.ETile -39:
+        enemy4.H -= items[spell]['pow']
+        screen[enemy4.ETile]['display'] = colour + '@@' + Fore.RESET
+
+  if radius == 3:
+    if type == 2:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21 or enemy.ETile == enemy2.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy2.ETile +22 or enemy.ETile == enemy2.ETile -22 or enemy.ETile == enemy2.ETile +18 or enemy.ETile == enemy2.ETile -18 or enemy.ETile == enemy2.ETile +40 or enemy.ETile == enemy2.ETile -40 or enemy.ETile == enemy2.ETile +41 or enemy.ETile == enemy2.ETile -41 or enemy.ETile == enemy2.ETile +39 or enemy.ETile == enemy2.ETile -39 or enemy.ETile == enemy2.ETile +3 or enemy.ETile == enemy2.ETile -3 or enemy.ETile == enemy2.ETile +23 or enemy.ETile == enemy2.ETile -23 or enemy.ETile == enemy2.ETile +17 or enemy.ETile == enemy2.ETile -17 or enemy.ETile == enemy2.ETile +60 or enemy.ETile == enemy2.ETile -60 or enemy.ETile == enemy2.ETile +61 or enemy.ETile == enemy2.ETile -61 or enemy.ETile == enemy2.ETile +59 or enemy.ETile == enemy2.ETile -59 or enemy.ETile == enemy2.ETile +42 or enemy.ETile == enemy2.ETile -42 or enemy.ETile == enemy2.ETile +38 or enemy.ETile == enemy2.ETile -38:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+    if type == 3:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21 or enemy.ETile == enemy2.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy2.ETile +22 or enemy.ETile == enemy2.ETile -22 or enemy.ETile == enemy2.ETile +18 or enemy.ETile == enemy2.ETile -18 or enemy.ETile == enemy2.ETile +40 or enemy.ETile == enemy2.ETile -40 or enemy.ETile == enemy2.ETile +41 or enemy.ETile == enemy2.ETile -41 or enemy.ETile == enemy2.ETile +39 or enemy.ETile == enemy2.ETile -39 or enemy.ETile == enemy2.ETile +3 or enemy.ETile == enemy2.ETile -3 or enemy.ETile == enemy2.ETile +23 or enemy.ETile == enemy2.ETile -23 or enemy.ETile == enemy2.ETile +17 or enemy.ETile == enemy2.ETile -17 or enemy.ETile == enemy2.ETile +60 or enemy.ETile == enemy2.ETile -60 or enemy.ETile == enemy2.ETile +61 or enemy.ETile == enemy2.ETile -61 or enemy.ETile == enemy2.ETile +59 or enemy.ETile == enemy2.ETile -59 or enemy.ETile == enemy2.ETile +42 or enemy.ETile == enemy2.ETile -42 or enemy.ETile == enemy2.ETile +38 or enemy.ETile == enemy2.ETile -38:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile -1 or enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile +20 or enemy.ETile == enemy3.ETile -20 or enemy.ETile == enemy3.ETile +19 or enemy.ETile == enemy3.ETile -19 or enemy.ETile == enemy3.ETile +21 or enemy.ETile == enemy3.ETile -21 or enemy.ETile == enemy3.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy3.ETile +22 or enemy.ETile == enemy3.ETile -22 or enemy.ETile == enemy3.ETile +18 or enemy.ETile == enemy3.ETile -18 or enemy.ETile == enemy3.ETile +40 or enemy.ETile == enemy3.ETile -40 or enemy.ETile == enemy3.ETile +41 or enemy.ETile == enemy3.ETile -41 or enemy.ETile == enemy3.ETile +39 or enemy.ETile == enemy3.ETile -39 or enemy.ETile == enemy3.ETile +3 or enemy.ETile == enemy3.ETile -3 or enemy.ETile == enemy3.ETile +23 or enemy.ETile == enemy3.ETile -23 or enemy.ETile == enemy3.ETile +17 or enemy.ETile == enemy3.ETile -17 or enemy.ETile == enemy3.ETile +60 or enemy.ETile == enemy3.ETile -60 or enemy.ETile == enemy3.ETile +61 or enemy.ETile == enemy3.ETile -61 or enemy.ETile == enemy3.ETile +59 or enemy.ETile == enemy3.ETile -59 or enemy.ETile == enemy3.ETile +42 or enemy.ETile == enemy3.ETile -42 or enemy.ETile == enemy3.ETile +38 or enemy.ETile == enemy3.ETile -38:
+        enemy3.H -= items[spell]['pow']
+        screen[enemy3.ETile]['display'] = colour + '@@' + Fore.RESET
+    if type == 4:
+      if enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile -1 or enemy.ETile == enemy2.ETile +1 or enemy.ETile == enemy2.ETile +20 or enemy.ETile == enemy2.ETile -20 or enemy.ETile == enemy2.ETile +19 or enemy.ETile == enemy2.ETile -19 or enemy.ETile == enemy2.ETile +21 or enemy.ETile == enemy2.ETile -21 or enemy.ETile == enemy2.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy2.ETile +22 or enemy.ETile == enemy2.ETile -22 or enemy.ETile == enemy2.ETile +18 or enemy.ETile == enemy2.ETile -18 or enemy.ETile == enemy2.ETile +40 or enemy.ETile == enemy2.ETile -40 or enemy.ETile == enemy2.ETile +41 or enemy.ETile == enemy2.ETile -41 or enemy.ETile == enemy2.ETile +39 or enemy.ETile == enemy2.ETile -39 or enemy.ETile == enemy2.ETile +3 or enemy.ETile == enemy2.ETile -3 or enemy.ETile == enemy2.ETile +23 or enemy.ETile == enemy2.ETile -23 or enemy.ETile == enemy2.ETile +17 or enemy.ETile == enemy2.ETile -17 or enemy.ETile == enemy2.ETile +60 or enemy.ETile == enemy2.ETile -60 or enemy.ETile == enemy2.ETile +61 or enemy.ETile == enemy2.ETile -61 or enemy.ETile == enemy2.ETile +59 or enemy.ETile == enemy2.ETile -59 or enemy.ETile == enemy2.ETile +42 or enemy.ETile == enemy2.ETile -42 or enemy.ETile == enemy2.ETile +38 or enemy.ETile == enemy2.ETile -38:
+        enemy2.H -= items[spell]['pow']
+        screen[enemy2.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile -1 or enemy.ETile == enemy3.ETile +1 or enemy.ETile == enemy3.ETile +20 or enemy.ETile == enemy3.ETile -20 or enemy.ETile == enemy3.ETile +19 or enemy.ETile == enemy3.ETile -19 or enemy.ETile == enemy3.ETile +21 or enemy.ETile == enemy3.ETile -21 or enemy.ETile == enemy3.ETile +2 or enemy.ETile == enemy2.ETile -2 or enemy.ETile == enemy3.ETile +22 or enemy.ETile == enemy3.ETile -22 or enemy.ETile == enemy3.ETile +18 or enemy.ETile == enemy3.ETile -18 or enemy.ETile == enemy3.ETile +40 or enemy.ETile == enemy3.ETile -40 or enemy.ETile == enemy3.ETile +41 or enemy.ETile == enemy3.ETile -41 or enemy.ETile == enemy3.ETile +39 or enemy.ETile == enemy3.ETile -39 or enemy.ETile == enemy3.ETile +3 or enemy.ETile == enemy3.ETile -3 or enemy.ETile == enemy3.ETile +23 or enemy.ETile == enemy3.ETile -23 or enemy.ETile == enemy3.ETile +17 or enemy.ETile == enemy3.ETile -17 or enemy.ETile == enemy3.ETile +60 or enemy.ETile == enemy3.ETile -60 or enemy.ETile == enemy3.ETile +61 or enemy.ETile == enemy3.ETile -61 or enemy.ETile == enemy3.ETile +59 or enemy.ETile == enemy3.ETile -59 or enemy.ETile == enemy3.ETile +42 or enemy.ETile == enemy3.ETile -42 or enemy.ETile == enemy3.ETile +38 or enemy.ETile == enemy3.ETile -38:
+        enemy3.H -= items[spell]['pow']
+        screen[enemy3.ETile]['display'] = colour + '@@' + Fore.RESET
+      if enemy.ETile == enemy4.ETile +1 or enemy.ETile == enemy4.ETile -1 or enemy.ETile == enemy4.ETile +1 or enemy.ETile == enemy4.ETile +20 or enemy.ETile == enemy4.ETile -20 or enemy.ETile == enemy4.ETile +19 or enemy.ETile == enemy4.ETile -19 or enemy.ETile == enemy4.ETile +21 or enemy.ETile == enemy4.ETile -21 or enemy.ETile == enemy4.ETile +2 or enemy.ETile == enemy4.ETile -2 or enemy.ETile == enemy4.ETile +22 or enemy.ETile == enemy4.ETile -22 or enemy.ETile == enemy4.ETile +18 or enemy.ETile == enemy4.ETile -18 or enemy.ETile == enemy4.ETile +40 or enemy.ETile == enemy4.ETile -40 or enemy.ETile == enemy4.ETile +41 or enemy.ETile == enemy4.ETile -41 or enemy.ETile == enemy4.ETile +39 or enemy.ETile == enemy4.ETile -39 or enemy.ETile == enemy4.ETile +3 or enemy.ETile == enemy4.ETile -3 or enemy.ETile == enemy4.ETile +23 or enemy.ETile == enemy4.ETile -23 or enemy.ETile == enemy4.ETile +17 or enemy.ETile == enemy4.ETile -17 or enemy.ETile == enemy4.ETile +60 or enemy.ETile == enemy4.ETile -60 or enemy.ETile == enemy4.ETile +61 or enemy.ETile == enemy4.ETile -61 or enemy.ETile == enemy4.ETile +59 or enemy.ETile == enemy4.ETile -59 or enemy.ETile == enemy4.ETile +42 or enemy.ETile == enemy4.ETile -42 or enemy.ETile == enemy4.ETile +38 or enemy.ETile == enemy4.ETile -38:
+        enemy4.H -= items[spell]['pow']
+        screen[enemy4.ETile]['display'] = colour + '@@' + Fore.RESET
+
+
+def spellAttack(enemy,com,type,enemy2,enemy3,enemy4):
   if items['Freeze Mist (Scroll)']['num'] == 1 and com == '1' and Player.SP != 0  and 'Freeze Mist (Scroll)' in spList:
     enemy.H -= items['Freeze Mist (Scroll)']['pow']
     screen[enemy.ETile]['display'] = Fore.LIGHTWHITE_EX + '@@' + Fore.RESET
@@ -1854,6 +1551,7 @@ def spellAttack(enemy):
     halt()
   elif items['Lava Splash (Scroll)']['num'] == 1 and com == '2'and Player.SP != 0 and 'Lava Splash (Scroll)' in spList:
     enemy.H -= items['Lava Splash (Scroll)']['pow']
+    checkProxim(type,enemy,enemy2,enemy3,enemy4,items['Lava Splash (Scroll)']['rad'],'Lava Splash (Scroll)', Fore.LIGHTRED_EX)
     screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
     os.system('cls')
     print(Fore.BLUE + '--Player Turn--')
@@ -1890,16 +1588,18 @@ def spellAttack(enemy):
     halt()
   elif items['Web (Scroll)']['num'] == 1 and com == '6'and Player.SP != 0 and 'Web (Scroll)' in spList:
     enemy.H -= items['Web (Scroll)']['pow']
+    checkProxim(type,enemy,enemy2,enemy3,enemy4,items['Web (Scroll)']['rad'],'Web (Scroll)', Fore.WHITE)
     screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
     os.system('cls')
     print(Fore.BLUE + '--Player Turn--')
     battlemap()
     print('The spell hits for ' + str(items['Web (Scroll)']['pow']) + ' and the enemy has been stuck for 3 turns!')
-    WebTimer = 4
+    enemy.WTimer = 4
     Player.SP -= 1
     halt()
   elif items['Spores (Scroll)']['num'] == 1 and com == '7'and Player.SP != 0 and 'Spores (Scroll)' in spList:
     enemy.H -= items['Spores (Scroll)']['pow']
+    checkProxim(type,enemy,enemy2,enemy3,enemy4,items['Spores (Scroll)']['rad'],'Spores (Scroll)', Fore.BLUE)
     screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
     os.system('cls')
     print(Fore.BLUE + '--Player Turn--')
@@ -1919,6 +1619,7 @@ def spellAttack(enemy):
     halt()
   elif items['Fireball (Scroll)']['num'] == 1 and com == '9'and Player.SP != 0 and 'Fireball (Scroll)' in spList:
     enemy.H -= items['Fireball (Scroll)']['pow']
+    checkProxim(type,enemy,enemy2,enemy3,enemy4,items['Fireball (Scroll)']['rad'],'Fireball (Scroll)', Fore.LIGHTRED_EX)
     screen[enemy.ETile]['display'] = Fore.LIGHTRED_EX + '@@' + Fore.RESET
     os.system('cls')
     print(Fore.BLUE + '--Player Turn--')
@@ -1937,7 +1638,61 @@ def spellAttack(enemy):
     halt()
 
   else:
-    print('Not an option')
+    print('not an option')
+    halt()
+
+
+def playerHeal():
+  heals()
+  com = input()
+  if com == '1' and items['Food (Small)']['num'] > 0:
+    items['Food (Small)']['num'] -= 1
+    Player.H += items['Food (Small)']['heal']
+    if Player.H >= 100:
+      Player.H = 100
+      print(Fore.GREEN + 'Healed to full!')
+      halt()
+    else:
+      print('Healed ' + str(items['Food (Small)']['heal']))
+      halt()
+  elif com == '2' and items['Food (Medium)']['num'] > 0:
+    items['Food (Medium)']['num'] -= 1
+    Player.H += items['Food (Medium)']['heal']
+    if Player.H >= 100:
+      Player.H = 100
+      print(Fore.GREEN + 'Healed to full!')
+    else:
+      print('Healed ' + str(items['Food (Medium)']['heal']))
+    halt()
+  elif com == '3' and items['Food (Large)']['num'] > 0:
+    items['Food (Large)']['num'] -= 1
+    Player.H += items['Food (Large)']['heal']
+    if Player.H >= 100:
+      Player.H = 100
+      print(Fore.GREEN + 'Healed to full!')
+    else:
+      print('Healed ' + str(items['Food (Large)']['heal']))
+    halt()
+  elif com == '4' and items['Heal Potion (Small))']['num'] > 0:
+    items['Heal Potion (Small)']['num'] -= 1
+    Player.H += items['Heal Potion (Small)']['heal']
+    if Player.H >= 100:
+      Player.H = 100
+      print(Fore.GREEN + 'Healed to full!')
+    else:
+      print('Healed ' + str(items['Heal Potion (Small)']['heal']))
+    halt()
+  elif com == '5' and items['Heal Potion (Medium)']['num'] > 0:
+    items['Heal Potion (Medium)']['num'] -= 1
+    Player.H += items['Heal Potion (Medium)']['heal']
+    if Player.H >= 100:
+      Player.H = 100
+      print(Fore.GREEN + 'Healed to full!')
+    else:
+      print('Healed ' + str(items['Heal Potion (Medium)']['heal']))
+    halt()
+  else:
+    print('not an option')
     halt()
 
 
@@ -1948,12 +1703,9 @@ def spellAttack(enemy):
 
 
 
-
-
 def fight1(enemy):
-  WebTimer = 0
   screen[Player.CTile]['display'] = '  '
-  Player.CTile = 250
+  Player.CTile = enemy.STile
   for n in screen:
     screen[n]['display'] = '  '
   x = 0
@@ -1962,7 +1714,7 @@ def fight1(enemy):
       if rooms[Player.CRoom]['bmap'][screen[n]['y']][screen[n]['x']] == 1:
         screen[n]['display'] = '##'
     screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-    if WebTimer != 0:
+    if enemy.WTimer != 0:
       screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
     else:
       screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
@@ -1975,7 +1727,7 @@ def fight1(enemy):
     enemy.Ex = screen[enemy.ETile]['x']
     enemy.Ey = screen[enemy.ETile]['y']
     screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-    if WebTimer != 0:
+    if enemy.WTimer != 0:
       screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
     else:
       screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
@@ -1987,11 +1739,11 @@ def fight1(enemy):
     print(Fore.RESET + '\n\n\n')
     print('Your turn, options are:\n'+Fore.BLUE+'Flee (f)\nSpell (q)\nItem (e)\nSprint (s)')
     if  Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
-      print('Attack (m)')
+      print('Attack (m1)')
     com = input()
     if com == 's':
       playerMove()
-    elif com == 'm' and Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+    elif com == 'm1' and Player.CTile == enemy.ETile + 20 or com == 'm1' and Player.CTile == enemy.ETile - 20 or com == 'm1' and Player.CTile == enemy.ETile + 1 or com == 'm1' and Player.CTile == enemy.ETile - 1 or com == 'm1' and Player.CTile == enemy.ETile +21 or com == 'm1' and Player.CTile == enemy.ETile -21 or com == 'm1' and Player.CTile == enemy.ETile +19 or com == 'm1' and Player.CTile == enemy.ETile -19:
       enemy.H -= items[Player.weapon]['pow']
 
 
@@ -2018,7 +1770,7 @@ def fight1(enemy):
         battlemap()
 
 
-      print('Hits for' + str(items[Player.weapon]['pow']))
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
       halt()
     elif com == 'f':
       r = random.randint(1,3)
@@ -2035,59 +1787,10 @@ def fight1(enemy):
       print(Fore.GREEN + 'Your spells are:\n')
       spells()
       com = input('\n\nWhich spell do you cast?')
-      spellAttack(enemy)
+      spellAttack(enemy,com,1,enemy,enemy,enemy)
+
     elif com == 'e':
-      heals()
-      com = input()
-      if com == '1' and items['Food (Small)']['num'] > 0:
-        items['Food (Small)']['num'] -= 1
-        Player.H += items['Food (Small)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-          halt()
-        else:
-          print('Healed ' + str(items['Food (Small)']['heal']))
-          halt()
-      elif com == '2':
-        items['Food (Medium)']['num'] -= 1
-        Player.H += items['Food (Medium)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-        else:
-          print('Healed ' + str(items['Food (Medium)']['heal']))
-        halt()
-      elif com == '3':
-        items['Food (Large)']['num'] -= 1
-        Player.H += items['Food (Large)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-        else:
-          print('Healed ' + str(items['Food (Large)']['heal']))
-        halt()
-      elif com == '4':
-        items['Heal Potion (Small)']['num'] -= 1
-        Player.H += items['Heal Potion (Small)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-        else:
-          print('Healed ' + str(items['Heal Potion (Small)']['heal']))
-        halt()
-      elif com == '5':
-        items['Heal Potion (Medium)']['num'] -= 1
-        Player.H += items['Heal Potion (Medium)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-        else:
-          print('Healed ' + str(items['Heal Potion (Medium)']['heal']))
-        halt()
-      else:
-        print('not an option')
-        halt()
+      playerHeal()
     else:
       print('not an option')
       halt()
@@ -2100,20 +1803,25 @@ def fight1(enemy):
       x = 1
     os.system('cls')
     if enemy.down == 0:
-      if WebTimer == 0:
+      if enemy.WTimer == 0:
         s = enemy.ESpeed
         while s >= 1:
           if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
             s = 0
           else:
-            screen[enemy.ETile]['display'] = '  '
-            astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy, 1)
+            screen[enemy.ETile]['display'] = '  ' 
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy, 1, enemy, enemy, enemy)
+            screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY MOVMENT--')
+            battlemap()
+            halt()
           s -= 1  
         screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
         os.system('cls')
       else:
         print(Fore.WHITE + 'The enemy is stuck!')
-        WebTimer -= 1
+        enemy.WTimer -= 1
       print(Fore.RED + '--ENEMY TURN--')
       battlemap()
       if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
@@ -2135,27 +1843,9 @@ def fight1(enemy):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def fight2(enemy,enemy2):
-  WebTimer1 = 0
-  WebTimer2 = 0
   screen[Player.CTile]['display'] = '  '
-  Player.CTile = 250
+  Player.CTile = enemy.STile
   for n in screen:
     screen[n]['display'] = '  '
   x = 0
@@ -2164,13 +1854,24 @@ def fight2(enemy,enemy2):
       if rooms[Player.CRoom]['bmap'][screen[n]['y']][screen[n]['x']] == 1:
         screen[n]['display'] = '##'
     screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-    if WebTimer1 != 0:
-      screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
-    if WebTimer2 != 0:
-      screen[enemy2.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+
+    if enemy.WTimer != 0 and enemy.DTXT == False:
+      screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
+    elif enemy.DTXT == True:
+      screen[enemy.ETile]['display'] = Fore.BLACK + '@1' + Fore.RESET
     else:
-      screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
-      screen[enemy2.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+      screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+
+    if enemy2.WTimer != 0 and enemy2.DTXT == False:
+      screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
+    elif enemy2.DTXT == True:
+      screen[enemy2.ETile]['display'] = Fore.BLACK + '@2' + Fore.RESET
+    else:
+      screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+
+
+
+
     print('--Movement Phase--')
     battlemap()
     playerMove()
@@ -2182,14 +1883,19 @@ def fight2(enemy,enemy2):
     enemy2.Ex = screen[enemy2.ETile]['x']
     enemy2.Ey = screen[enemy2.ETile]['y']
     screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
-    if WebTimer1 != 0:
-      screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+    if enemy.WTimer != 0 and enemy.DTXT == False:
+      screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
+    elif enemy.DTXT == True:
+      screen[enemy.ETile]['display'] = Fore.BLACK + '@1' + Fore.RESET
     else:
-      screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
-    if WebTimer2 != 0:
-      screen[enemy2.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+      screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+
+    if enemy2.WTimer != 0 and enemy2.DTXT == False:
+      screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
+    elif enemy2.DTXT == True:
+      screen[enemy2.ETile]['display'] = Fore.BLACK + '@2' + Fore.RESET
     else:
-      screen[enemy2.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
+      screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
     print(Fore.BLUE + '--Player Turn--')
     battlemap()
     print(Fore.RED + 'Player Health = ' + str(Player.H) )
@@ -2198,72 +1904,72 @@ def fight2(enemy,enemy2):
     print(Fore.RED + '\nEnemy 2 Health = ' + str(enemy2.H))
     print(Fore.RESET + '\n\n\n')
     print('Your turn, options are:\n'+Fore.BLUE+'Flee (f)\nSpell (q)\nItem (e)\nSprint (s)')
-    if  Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
-      print('Attack Enemy 1 (m1)')
-    if  Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
-      print('Attack Enemy 2 (m1)')
+    if enemy.DTXT == False:
+      if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+        print('Attack Enemy 1 (m1)')
+    if enemy2.DTXT == False:
+      if  Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+        print('Attack Enemy 2 (m2)')
     com = input()
 
 
     if com == 's':
       playerMove()
 
-
-    elif com == 'm' or 'm1' and Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+    elif com == 'm1' and Player.CTile == enemy.ETile + 20 or com == 'm1' and Player.CTile == enemy.ETile - 20 or com == 'm1' and Player.CTile == enemy.ETile + 1 or com == 'm1' and Player.CTile == enemy.ETile - 1 or com == 'm1' and Player.CTile == enemy.ETile +21 or com == 'm1' and Player.CTile == enemy.ETile -21 or com == 'm1' and Player.CTile == enemy.ETile +19 or com == 'm1' and Player.CTile == enemy.ETile -19:
       enemy.H -= items[Player.weapon]['pow']
 
       if items[Player.weapon]['type'] == 'blunt':
-        screen[enemy.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+        screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
         os.system('cls')
         print(Fore.BLUE + '--Player Turn--')
         battlemap()
       elif items[Player.weapon]['type'] == 'slash':
-        screen[enemy.ETile]['display'] = Fore.LIGHTBLUE_EX + '@@' + Fore.RESET
+        screen[enemy.ETile]['display'] = Fore.LIGHTBLUE_EX + '@1' + Fore.RESET
         os.system('cls')
         print(Fore.BLUE + '--Player Turn--')
         battlemap()
       elif items[Player.weapon]['type'] == 'acid':
-        screen[enemy.ETile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+        screen[enemy.ETile]['display'] = Fore.GREEN + '@1' + Fore.RESET
         os.system('cls')
         print(Fore.BLUE + '--Player Turn--')
         battlemap()
       elif items[Player.weapon]['type'] == 'shock':
-        screen[enemy.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+        screen[enemy.ETile]['display'] = Fore.BLUE + '@1' + Fore.RESET
         os.system('cls')
         print(Fore.BLUE + '--Player Turn--')
         battlemap()
 
 
-      print('Hits for' + str(items[Player.weapon]['pow']))
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
       halt()
 
-
-    elif com == 'm' or 'm2' and Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+    elif com == 'm2' and Player.CTile == enemy2.ETile + 20 or com == 'm2' and Player.CTile == enemy2.ETile - 20 or com == 'm2' and Player.CTile == enemy2.ETile + 1 or com == 'm2' and Player.CTile == enemy2.ETile - 1 or com == 'm2' and Player.CTile == enemy2.ETile +21 or com == 'm2' and Player.CTile == enemy2.ETile -21 or com == 'm2' and Player.CTile == enemy2.ETile +19 or com == 'm2' and Player.CTile == enemy2.ETile -19:
       enemy2.H -= items[Player.weapon]['pow']
 
       if items[Player.weapon]['type'] == 'blunt':
-        screen[enemy2.ETile]['display'] = Fore.WHITE + '@@' + Fore.RESET
+        screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
         os.system('cls')
         print(Fore.BLUE + '--Player Turn--')
         battlemap()
       elif items[Player.weapon]['type'] == 'slash':
-        screen[enemy2.ETile]['display'] = Fore.LIGHTBLUE_EX + '@@' + Fore.RESET
+        screen[enemy2.ETile]['display'] = Fore.LIGHTBLUE_EX + '@2' + Fore.RESET
         os.system('cls')
         print(Fore.BLUE + '--Player Turn--')
         battlemap()
       elif items[Player.weapon]['type'] == 'acid':
-        screen[enemy2.ETile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+        screen[enemy2.ETile]['display'] = Fore.GREEN + '@2' + Fore.RESET
         os.system('cls')
         print(Fore.BLUE + '--Player Turn--')
         battlemap()
       elif items[Player.weapon]['type'] == 'shock':
-        screen[enemy2.ETile]['display'] = Fore.BLUE + '@@' + Fore.RESET
+        screen[enemy2.ETile]['display'] = Fore.BLUE + '@2' + Fore.RESET
         os.system('cls')
         print(Fore.BLUE + '--Player Turn--')
         battlemap()
 
 
-      print('Hits for' + str(items[Player.weapon]['pow']))
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
       halt()
 
     elif com == 'f':
@@ -2276,100 +1982,61 @@ def fight2(enemy,enemy2):
         halt()
         Player.CRoom = Player.PreRoom
         x = 1
-
-
     elif com == 'q':
       os.system('cls')
-      print(Fore.GREEN + 'Your spells are:\n')
-      spells()
-      com = input('\n\nWhich spell do you cast?')
       if enemy.down == 0 and enemy2.down == 0: 
         os.system('cls')
         print('Enemy 1  (1)          Enemy2  (2)')
-        com2 = input('Which enemy is the target?')
+        com2 = input('Which enemy is the target?  ')
         if com2 == '1':
-          spellAttack(enemy)
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,2,enemy2,enemy2,enemy2)
         elif com2 == '2':
-          spellAttack(enemy2)
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,2,enemy,enemy,enemy)
         else:
           print('Not an option')
           halt()
       elif enemy.down == 1:
-        spellAttack(enemy2)
-      else:
-        spellAttack(enemy)
-
- 
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy2,com,1,enemy2,enemy2,enemy2)
+      elif enemy2.down == 1:
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy,com,1,enemy2,enemy2,enemy2)
     elif com == 'e':
-      heals()
-      com = input()
-      if com == '1' and items['Food (Small)']['num'] > 0:
-        items['Food (Small)']['num'] -= 1
-        Player.H += items['Food (Small)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-          halt()
-        else:
-          print('Healed ' + str(items['Food (Small)']['heal']))
-          halt()
-      elif com == '2':
-        items['Food (Medium)']['num'] -= 1
-        Player.H += items['Food (Medium)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-        else:
-          print('Healed ' + str(items['Food (Medium)']['heal']))
-        halt()
-      elif com == '3':
-        items['Food (Large)']['num'] -= 1
-        Player.H += items['Food (Large)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-        else:
-          print('Healed ' + str(items['Food (Large)']['heal']))
-        halt()
-      elif com == '4':
-        items['Heal Potion (Small)']['num'] -= 1
-        Player.H += items['Heal Potion (Small)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-        else:
-          print('Healed ' + str(items['Heal Potion (Small)']['heal']))
-        halt()
-      elif com == '5':
-        items['Heal Potion (Medium)']['num'] -= 1
-        Player.H += items['Heal Potion (Medium)']['heal']
-        if Player.H >= 100:
-          Player.H = 100
-          print(Fore.GREEN + 'Healed to full!')
-        else:
-          print('Healed ' + str(items['Heal Potion (Medium)']['heal']))
-        halt()
-      else:
-        print('not an option')
-        halt()
+      playerHeal()
     else:
       print('not an option')
       halt()
 
 
-    if enemy.H <= 0:
+    if enemy.H <= 0 and enemy.DTXT == False:
       os.system('cls')
       print('Enemy 1 dies!')
       halt()
       screen[enemy.ETile]['display'] = '  '
       enemy.down = 1
+      enemy.DTXT = True
 
-    if enemy2.H <= 0:
+    if enemy2.H <= 0 and enemy2.DTXT == False:
       os.system('cls')
       print('Enemy 2 dies!')
       halt()
       screen[enemy2.ETile]['display'] = '  '
       enemy2.down = 1
+      enemy2.DTXT = True
 
     if enemy.down == 1 and enemy2.down == 1:
       os.system('cls')
@@ -2380,61 +2047,74 @@ def fight2(enemy,enemy2):
 
 
     os.system('cls')
-    if WebTimer1 == 0:
-      s = enemy.ESpeed
-      while s >= 1:
-        if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
-          s = 0
-        else:
-          screen[enemy.ETile]['display'] = '  '
-          astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy, 2)
-        s -= 1  
-      screen[enemy.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
-      os.system('cls')
-    else:
-      print(Fore.WHITE + 'Enemy 1 is stuck!')
-      WebTimer -= 1
-
-    if WebTimer2 == 0:
-      s = enemy2.ESpeed
-      while s >= 1:
-        if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
-          s = 0
-        else:
-          screen[enemy2.ETile]['display'] = '  '
-          astar(rooms[Player.CRoom]['bmap'],(screen[enemy2.ETile]['y'],screen[enemy2.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy2, 2)
-        s -= 1  
-      screen[enemy2.ETile]['display'] = Fore.RED + '@@' + Fore.RESET
-      os.system('cls')
-    else:
-      print(Fore.WHITE + 'Enemy 2 is stuck!')
-      WebTimer2 -= 1
-
-
-
-    print(Fore.RED + '--ENEMY TURN--')
-    battlemap()
-    if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
-      hit = random.randint(1,100)
-      hit -= items[Player.armour]['def']
-      if hit < 1:
-        print(Fore.GREEN + 'Enemy 1 misses!')
+    if enemy.down == 0:
+      if enemy.WTimer == 0:
+        s = enemy.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+            s = 0
+          else:
+            screen[enemy.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy, 2, enemy2, enemy2, enemy2)
+            screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 1 MOVMENT--')
+            battlemap()
+            halt()
+          s -= 1  
+        screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+        os.system('cls')
       else:
-        print(Fore.RED + 'Enemy 1 hits for ' + str(enemy.damage))
-        Player.H -= enemy.damage
-      print(Fore.RESET)
+        print(Fore.WHITE + 'Enemy 1 is stuck!')
+        enemy.WTimer -= 1
 
-    if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
-      hit = random.randint(1,100)
-      hit -= items[Player.armour]['def']
-      if hit < 1:
-        print(Fore.GREEN + 'Enemy 2 misses!')
+      print(Fore.RED + '--ENEMY 1 TURN--')
+      battlemap()
+      if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 1 misses!')
+        else:
+          print(Fore.RED + 'Enemy 1 hits for ' + str(enemy.damage))
+          Player.H -= enemy.damage
+        print(Fore.RESET)
+      halt()
+    if enemy2.down == 0:
+      if enemy2.WTimer == 0:
+        s = enemy2.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+            s = 0
+          else:
+            screen[enemy2.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy2.ETile]['y'],screen[enemy2.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy2, 2, enemy, enemy, enemy)
+            screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 2 MOVMENT--')
+            battlemap()
+            halt()
+          s -= 1  
+        screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+        os.system('cls')
       else:
-        print(Fore.RED + 'Enemy 2 hits for ' + str(enemy2.damage))
-        Player.H -= enemy2.damage
-      print(Fore.RESET)
-      
-    halt()
+        print(Fore.WHITE + 'Enemy 2 is stuck!')
+        enemy2.WTimer -= 1
+
+      print(Fore.RED + '--ENEMY 2 TURN--')
+      battlemap()
+      if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 2 misses!')
+        else:
+          print(Fore.RED + 'Enemy 2 hits for ' + str(enemy2.damage))
+          Player.H -= enemy2.damage
+        print(Fore.RESET)
+      halt()
+
+
     os.system('cls')
     if Player.H <= 0:
       os.system('cls')
@@ -2443,6 +2123,1169 @@ def fight2(enemy,enemy2):
       x = 1
 
 
+
+def fight3(enemy,enemy2,enemy3):
+  screen[Player.CTile]['display'] = '  '
+  Player.CTile = enemy.STile
+  for n in screen:
+    screen[n]['display'] = '  '
+  x = 0
+  while x == 0:
+    for n in screen:
+      if rooms[Player.CRoom]['bmap'][screen[n]['y']][screen[n]['x']] == 1:
+        screen[n]['display'] = '##'
+    screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+
+    if enemy.WTimer != 0 and enemy.DTXT == False:
+      screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
+    elif enemy.DTXT == True:
+      screen[enemy.ETile]['display'] = Fore.BLACK + '@1' + Fore.RESET
+    else:
+      screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+
+    if enemy2.WTimer != 0 and enemy2.DTXT == False:
+      screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
+    elif enemy2.DTXT == True:
+      screen[enemy2.ETile]['display'] = Fore.BLACK + '@2' + Fore.RESET
+    else:
+      screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+
+    if enemy3.WTimer != 0 and enemy3.DTXT == False:
+      screen[enemy3.ETile]['display'] = Fore.WHITE + '@3' + Fore.RESET
+    elif enemy3.DTXT == True:
+      screen[enemy3.ETile]['display'] = Fore.BLACK + '@3' + Fore.RESET
+    else:
+      screen[enemy3.ETile]['display'] = Fore.RED + '@3' + Fore.RESET
+
+
+
+    print('--Movement Phase--')
+    battlemap()
+    playerMove()
+    os.system('cls')
+    Player.x = screen[Player.CTile]['x']
+    Player.y = screen[Player.CTile]['y']
+    enemy.Ex = screen[enemy.ETile]['x']
+    enemy.Ey = screen[enemy.ETile]['y']
+    enemy2.Ex = screen[enemy2.ETile]['x']
+    enemy2.Ey = screen[enemy2.ETile]['y']
+    enemy3.Ex = screen[enemy3.ETile]['x']
+    enemy3.Ey = screen[enemy3.ETile]['y']
+    screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+    if enemy.WTimer != 0 and enemy.DTXT == False:
+      screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
+    elif enemy.DTXT == True:
+      screen[enemy.ETile]['display'] = Fore.BLACK + '@1' + Fore.RESET
+    else:
+      screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+
+    if enemy2.WTimer != 0 and enemy2.DTXT == False:
+      screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
+    elif enemy2.DTXT == True:
+      screen[enemy2.ETile]['display'] = Fore.BLACK + '@2' + Fore.RESET
+    else:
+      screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+
+    if enemy3.WTimer != 0 and enemy3.DTXT == False:
+      screen[enemy3.ETile]['display'] = Fore.WHITE + '@3' + Fore.RESET
+    elif enemy3.DTXT == True:
+      screen[enemy3.ETile]['display'] = Fore.BLACK + '@3' + Fore.RESET
+    else:
+      screen[enemy3.ETile]['display'] = Fore.RED + '@3' + Fore.RESET
+
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print(Fore.RED + 'Player Health = ' + str(Player.H) )
+    print(Fore.BLUE + 'Player SP = ' + str(Player.SP) + Fore.RESET)
+    print(Fore.RED + '\nEnemy 1 Health = ' + str(enemy.H))
+    print(Fore.RED + '\nEnemy 2 Health = ' + str(enemy2.H))
+    print(Fore.RED + '\nEnemy 3 Health = ' + str(enemy3.H))
+    print(Fore.RESET + '\n\n\n')
+    print('Your turn, options are:\n'+Fore.BLUE+'Flee (f)\nSpell (q)\nItem (e)\nSprint (s)')
+    if enemy.DTXT == False:
+      if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+        print('Attack Enemy 1 (m1)')
+    if enemy2.DTXT == False:
+      if  Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+        print('Attack Enemy 2 (m2)')
+    if enemy3.DTXT == False:
+      if  Player.CTile == enemy3.ETile + 20 or Player.CTile == enemy3.ETile - 20 or Player.CTile == enemy3.ETile + 1 or Player.CTile == enemy3.ETile - 1 or Player.CTile == enemy3.ETile +21 or Player.CTile == enemy3.ETile -21 or Player.CTile == enemy3.ETile +19 or Player.CTile == enemy3.ETile -19:
+        print('Attack Enemy 3 (m3)')
+    com = input()
+
+
+    if com == 's':
+      playerMove()
+
+    elif com == 'm1' and Player.CTile == enemy.ETile + 20 or com == 'm1' and Player.CTile == enemy.ETile - 20 or com == 'm1' and Player.CTile == enemy.ETile + 1 or com == 'm1' and Player.CTile == enemy.ETile - 1 or com == 'm1' and Player.CTile == enemy.ETile +21 or com == 'm1' and Player.CTile == enemy.ETile -21 or com == 'm1' and Player.CTile == enemy.ETile +19 or com == 'm1' and Player.CTile == enemy.ETile -19:
+      enemy.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy.ETile]['display'] = Fore.LIGHTBLUE_EX + '@1' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy.ETile]['display'] = Fore.GREEN + '@1' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy.ETile]['display'] = Fore.BLUE + '@1' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
+      halt()
+
+    elif com == 'm2' and Player.CTile == enemy2.ETile + 20 or com == 'm2' and Player.CTile == enemy2.ETile - 20 or com == 'm2' and Player.CTile == enemy2.ETile + 1 or com == 'm2' and Player.CTile == enemy2.ETile - 1 or com == 'm2' and Player.CTile == enemy2.ETile +21 or com == 'm2' and Player.CTile == enemy2.ETile -21 or com == 'm2' and Player.CTile == enemy2.ETile +19 or com == 'm2' and Player.CTile == enemy2.ETile -19:
+      enemy2.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy2.ETile]['display'] = Fore.LIGHTBLUE_EX + '@2' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy2.ETile]['display'] = Fore.GREEN + '@2' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy2.ETile]['display'] = Fore.BLUE + '@2' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
+      halt()
+
+    elif com == 'm3' and Player.CTile == enemy3.ETile + 20 or com == 'm3' and Player.CTile == enemy3.ETile - 20 or com == 'm3' and Player.CTile == enemy3.ETile + 1 or com == 'm3' and Player.CTile == enemy3.ETile - 1 or com == 'm3' and Player.CTile == enemy3.ETile +21 or com == 'm3' and Player.CTile == enemy3.ETile -21 or com == 'm3' and Player.CTile == enemy3.ETile +19 or com == 'm3' and Player.CTile == enemy3.ETile -19:
+      enemy3.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy3.ETile]['display'] = Fore.WHITE + '@3' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy3.ETile]['display'] = Fore.LIGHTBLUE_EX + '@3' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy3.ETile]['display'] = Fore.GREEN + '@3' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy3.ETile]['display'] = Fore.BLUE + '@3' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
+      halt()
+
+    elif com == 'f':
+      r = random.randint(1,3)
+      if r == 3:
+        print('Escape Failed!')
+        halt()
+      else:
+        print('Escape Sucessful! Combat ends after Enemy Turn')
+        halt()
+        Player.CRoom = Player.PreRoom
+        x = 1
+    elif com == 'q':
+      os.system('cls')
+
+      if enemy.down == 0 and enemy2.down == 0 and enemy3.down == 0:
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy2  (2)          Enemy3  (3)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,3,enemy2,enemy3,enemy)
+        elif com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,3,enemy,enemy3,enemy3)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,3,enemy,enemy2,enemy2)
+        else:
+          print('Not an option')
+          halt()      
+
+      elif enemy.down == 1 and enemy2.down == 0 and enemy3.down == 0: 
+        os.system('cls')
+        print('Enemy 2  (2)          Enemy3  (3)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,2,enemy3,enemy3,enemy3)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,2,enemy2,enemy2,enemy2)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy.down == 0 and enemy2.down == 1 and enemy3.down == 0: 
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy3  (3)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,2,enemy3,enemy3,enemy3)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,2,enemy,enemy,enemy)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy.down == 0 and enemy2.down == 0 and enemy3.down == 1: 
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy2  (2)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,2,enemy2,enemy2,enemy2)
+        elif com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,2,enemy,enemy,enemy)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy2.down == 1 and enemy3.down == 1:
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy,com,1,enemy,enemy,enemy)
+
+      elif enemy.down == 1 and enemy3.down == 1:
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy2,com,1,enemy2,enemy2,enemy2)
+
+      elif enemy.down == 1 and enemy2.down == 1:
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy3,com,1,enemy3,enemy3,enemy3)
+
+    elif com == 'e':
+      playerHeal()
+    else:
+      print('not an option')
+      halt()
+
+
+    if enemy.H <= 0 and enemy.DTXT == False:
+      os.system('cls')
+      print('Enemy 1 dies!')
+      halt()
+      screen[enemy.ETile]['display'] = '  '
+      enemy.down = 1
+      enemy.DTXT = True
+
+    if enemy2.H <= 0 and enemy2.DTXT == False:
+      os.system('cls')
+      print('Enemy 2 dies!')
+      halt()
+      screen[enemy2.ETile]['display'] = '  '
+      enemy2.down = 1
+      enemy2.DTXT = True
+
+    if enemy3.H <= 0 and enemy3.DTXT == False:
+      os.system('cls')
+      print('Enemy 3 dies!')
+      halt()
+      screen[enemy3.ETile]['display'] = Fore.BLACK + '@@'
+      enemy3.down = 1
+      enemy3.DTXT = True
+
+    if enemy.down == 1 and enemy2.down == 1 and enemy3.down == 1:
+      os.system('cls')
+      print('The Enemies are defeated!')
+      halt()
+      x = 1
+
+
+
+    os.system('cls')
+    if enemy.down == 0:
+      if enemy.WTimer == 0:
+        s = enemy.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+            s = 0
+          else:
+            screen[enemy.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy, 3, enemy2, enemy3, enemy3)
+            screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 1 MOVMENT--')
+            battlemap()
+            halt()          
+          s -= 1  
+        screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+        os.system('cls')
+      else:
+        print(Fore.WHITE + 'Enemy 1 is stuck!')
+        enemy.WTimer -= 1
+
+      print(Fore.RED + '--ENEMY 1 TURN--')
+      battlemap()
+      if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 1 misses!')
+        else:
+          print(Fore.RED + 'Enemy 1 hits for ' + str(enemy.damage))
+          Player.H -= enemy.damage
+        print(Fore.RESET)
+      halt()
+    if enemy2.down == 0:
+      if enemy2.WTimer == 0:
+        s = enemy2.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+            s = 0
+          else:
+            screen[enemy2.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy2.ETile]['y'],screen[enemy2.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy2, 3, enemy, enemy3, enemy3)
+            screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 2 MOVMENT--')
+            battlemap()
+            halt()         
+          s -= 1  
+        screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+        os.system('cls')
+      else:
+        print(Fore.WHITE + 'Enemy 2 is stuck!')
+        enemy2.WTimer -= 1
+
+      print(Fore.RED + '--ENEMY 2 TURN--')
+      battlemap()
+      if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 2 misses!')
+        else:
+          print(Fore.RED + 'Enemy 2 hits for ' + str(enemy2.damage))
+          Player.H -= enemy2.damage
+        print(Fore.RESET)
+      halt()
+    if enemy3.down == 0:
+      if enemy3.WTimer == 0:
+        s = enemy3.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy3.ETile + 20 or Player.CTile == enemy3.ETile - 20 or Player.CTile == enemy3.ETile + 1 or Player.CTile == enemy3.ETile - 1 or Player.CTile == enemy3.ETile +21 or Player.CTile == enemy3.ETile -21 or Player.CTile == enemy3.ETile +19 or Player.CTile == enemy3.ETile -19:
+            s = 0
+          else:
+            screen[enemy3.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy3.ETile]['y'],screen[enemy3.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy3, 3, enemy, enemy2, enemy2)
+            screen[enemy3.ETile]['display'] = Fore.RED + '@3' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 3 MOVMENT--')
+            battlemap()
+            halt()          
+          s -= 1  
+        screen[enemy3.ETile]['display'] = Fore.RED + '@3' + Fore.RESET
+        os.system('cls')
+      else:
+        print(Fore.WHITE + 'Enemy 3 is stuck!')
+        enemy3.WTimer -= 1
+
+      print(Fore.RED + '--ENEMY 3 TURN--')
+      battlemap()
+      if Player.CTile == enemy3.ETile + 20 or Player.CTile == enemy3.ETile - 20 or Player.CTile == enemy3.ETile + 1 or Player.CTile == enemy3.ETile - 1 or Player.CTile == enemy3.ETile +21 or Player.CTile == enemy3.ETile -21 or Player.CTile == enemy3.ETile +19 or Player.CTile == enemy3.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 3 misses!')
+        else:
+          print(Fore.RED + 'Enemy 3 hits for ' + str(enemy3.damage))
+          Player.H -= enemy3.damage
+        print(Fore.RESET)
+      halt()
+
+    os.system('cls')
+    if Player.H <= 0:
+      os.system('cls')
+      print('You Died!')
+      halt()
+      x = 1
+
+
+
+def fight4(enemy,enemy2,enemy3,enemy4):
+  screen[Player.CTile]['display'] = '  '
+  Player.CTile = enemy.STile
+  for n in screen:
+    screen[n]['display'] = '  '
+  x = 0
+  while x == 0:
+    for n in screen:
+      if rooms[Player.CRoom]['bmap'][screen[n]['y']][screen[n]['x']] == 1:
+        screen[n]['display'] = '##'
+    screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+
+    if enemy.WTimer != 0 and enemy.DTXT == False:
+      screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
+    elif enemy.DTXT == True:
+      screen[enemy.ETile]['display'] = Fore.BLACK + '@1' + Fore.RESET
+    else:
+      screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+
+    if enemy2.WTimer != 0 and enemy2.DTXT == False:
+      screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
+    elif enemy2.DTXT == True:
+      screen[enemy2.ETile]['display'] = Fore.BLACK + '@2' + Fore.RESET
+    else:
+      screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+
+    if enemy3.WTimer != 0 and enemy3.DTXT == False:
+      screen[enemy3.ETile]['display'] = Fore.WHITE + '@3' + Fore.RESET
+    elif enemy3.DTXT == True:
+      screen[enemy3.ETile]['display'] = Fore.BLACK + '@3' + Fore.RESET
+    else:
+      screen[enemy3.ETile]['display'] = Fore.RED + '@3' + Fore.RESET
+
+    if enemy4.WTimer != 0 and enemy4.DTXT == False:
+      screen[enemy4.ETile]['display'] = Fore.WHITE + '@4' + Fore.RESET
+    elif enemy4.DTXT == True:
+      screen[enemy4.ETile]['display'] = Fore.BLACK + '@4' + Fore.RESET
+    else:
+      screen[enemy4.ETile]['display'] = Fore.RED + '@4' + Fore.RESET
+
+    print('--Movement Phase--')
+    battlemap()
+    playerMove()
+    os.system('cls')
+    Player.x = screen[Player.CTile]['x']
+    Player.y = screen[Player.CTile]['y']
+    enemy.Ex = screen[enemy.ETile]['x']
+    enemy.Ey = screen[enemy.ETile]['y']
+    enemy2.Ex = screen[enemy2.ETile]['x']
+    enemy2.Ey = screen[enemy2.ETile]['y']
+    enemy3.Ex = screen[enemy3.ETile]['x']
+    enemy3.Ey = screen[enemy3.ETile]['y']
+    enemy4.Ex = screen[enemy4.ETile]['x']
+    enemy4.Ey = screen[enemy4.ETile]['y']
+    screen[Player.CTile]['display'] = Fore.GREEN + '@@' + Fore.RESET
+    if enemy.WTimer != 0 and enemy.DTXT == False:
+      screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
+    elif enemy.DTXT == True:
+      screen[enemy.ETile]['display'] = Fore.BLACK + '@1' + Fore.RESET
+    else:
+      screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+
+    if enemy2.WTimer != 0 and enemy2.DTXT == False:
+      screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
+    elif enemy2.DTXT == True:
+      screen[enemy2.ETile]['display'] = Fore.BLACK + '@2' + Fore.RESET
+    else:
+      screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+
+    if enemy3.WTimer != 0 and enemy3.DTXT == False:
+      screen[enemy3.ETile]['display'] = Fore.WHITE + '@3' + Fore.RESET
+    elif enemy3.DTXT == True:
+      screen[enemy3.ETile]['display'] = Fore.BLACK + '@3' + Fore.RESET
+    else:
+      screen[enemy3.ETile]['display'] = Fore.RED + '@3' + Fore.RESET
+
+    if enemy4.WTimer != 0 and enemy4.DTXT == False:
+      screen[enemy4.ETile]['display'] = Fore.WHITE + '@4' + Fore.RESET
+    elif enemy4.DTXT == True:
+      screen[enemy4.ETile]['display'] = Fore.BLACK + '@4' + Fore.RESET
+    else:
+      screen[enemy4.ETile]['display'] = Fore.RED + '@4' + Fore.RESET
+
+    print(Fore.BLUE + '--Player Turn--')
+    battlemap()
+    print(Fore.RED + 'Player Health = ' + str(Player.H) )
+    print(Fore.BLUE + 'Player SP = ' + str(Player.SP) + Fore.RESET)
+    print(Fore.RED + '\nEnemy 1 Health = ' + str(enemy.H))
+    print(Fore.RED + '\nEnemy 2 Health = ' + str(enemy2.H))
+    print(Fore.RED + '\nEnemy 3 Health = ' + str(enemy3.H))
+    print(Fore.RED + '\nEnemy 4 Health = ' + str(enemy4.H))    
+    print(Fore.RESET + '\n\n\n')
+    print('Your turn, options are:\n'+Fore.BLUE+'Flee (f)\nSpell (q)\nItem (e)\nSprint (s)')
+    if enemy.DTXT == False:
+      if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+        print('Attack Enemy 1 (m1)')
+    if enemy2.DTXT == False:
+      if  Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+        print('Attack Enemy 2 (m2)')
+    if enemy3.DTXT == False:
+      if  Player.CTile == enemy3.ETile + 20 or Player.CTile == enemy3.ETile - 20 or Player.CTile == enemy3.ETile + 1 or Player.CTile == enemy3.ETile - 1 or Player.CTile == enemy3.ETile +21 or Player.CTile == enemy3.ETile -21 or Player.CTile == enemy3.ETile +19 or Player.CTile == enemy3.ETile -19:
+        print('Attack Enemy 3 (m3)')
+    if enemy4.DTXT == False:
+      if  Player.CTile == enemy4.ETile + 20 or Player.CTile == enemy4.ETile - 20 or Player.CTile == enemy4.ETile + 1 or Player.CTile == enemy4.ETile - 1 or Player.CTile == enemy4.ETile +21 or Player.CTile == enemy4.ETile -21 or Player.CTile == enemy4.ETile +19 or Player.CTile == enemy4.ETile -19:
+        print('Attack Enemy 4 (m4)')
+    com = input()
+
+
+    if com == 's':
+      playerMove()
+
+    elif com == 'm1' and Player.CTile == enemy.ETile + 20 or com == 'm1' and Player.CTile == enemy.ETile - 20 or com == 'm1' and Player.CTile == enemy.ETile + 1 or com == 'm1' and Player.CTile == enemy.ETile - 1 or com == 'm1' and Player.CTile == enemy.ETile +21 or com == 'm1' and Player.CTile == enemy.ETile -21 or com == 'm1' and Player.CTile == enemy.ETile +19 or com == 'm1' and Player.CTile == enemy.ETile -19:
+      enemy.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy.ETile]['display'] = Fore.WHITE + '@1' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy.ETile]['display'] = Fore.LIGHTBLUE_EX + '@1' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy.ETile]['display'] = Fore.GREEN + '@1' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy.ETile]['display'] = Fore.BLUE + '@1' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
+      halt()
+
+    elif com == 'm2' and Player.CTile == enemy2.ETile + 20 or com == 'm2' and Player.CTile == enemy2.ETile - 20 or com == 'm2' and Player.CTile == enemy2.ETile + 1 or com == 'm2' and Player.CTile == enemy2.ETile - 1 or com == 'm2' and Player.CTile == enemy2.ETile +21 or com == 'm2' and Player.CTile == enemy2.ETile -21 or com == 'm2' and Player.CTile == enemy2.ETile +19 or com == 'm2' and Player.CTile == enemy2.ETile -19:
+      enemy2.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy2.ETile]['display'] = Fore.WHITE + '@2' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy2.ETile]['display'] = Fore.LIGHTBLUE_EX + '@2' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy2.ETile]['display'] = Fore.GREEN + '@2' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy2.ETile]['display'] = Fore.BLUE + '@2' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
+      halt()
+
+    elif com == 'm3' and Player.CTile == enemy3.ETile + 20 or com == 'm3' and Player.CTile == enemy3.ETile - 20 or com == 'm3' and Player.CTile == enemy3.ETile + 1 or com == 'm3' and Player.CTile == enemy3.ETile - 1 or com == 'm3' and Player.CTile == enemy3.ETile +21 or com == 'm3' and Player.CTile == enemy3.ETile -21 or com == 'm3' and Player.CTile == enemy3.ETile +19 or com == 'm3' and Player.CTile == enemy3.ETile -19:
+      enemy3.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy3.ETile]['display'] = Fore.WHITE + '@3' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy3.ETile]['display'] = Fore.LIGHTBLUE_EX + '@3' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy3.ETile]['display'] = Fore.GREEN + '@3' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy3.ETile]['display'] = Fore.BLUE + '@3' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
+      halt()
+
+    elif com == 'm4' and Player.CTile == enemy4.ETile + 20 or com == 'm4' and Player.CTile == enemy4.ETile - 20 or com == 'm4' and Player.CTile == enemy4.ETile + 1 or com == 'm4' and Player.CTile == enemy4.ETile - 1 or com == 'm4' and Player.CTile == enemy4.ETile +21 or com == 'm4' and Player.CTile == enemy4.ETile -21 or com == 'm4' and Player.CTile == enemy4.ETile +19 or com == 'm4' and Player.CTile == enemy4.ETile -19:
+      enemy4.H -= items[Player.weapon]['pow']
+
+      if items[Player.weapon]['type'] == 'blunt':
+        screen[enemy4.ETile]['display'] = Fore.WHITE + '@4' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'slash':
+        screen[enemy4.ETile]['display'] = Fore.LIGHTBLUE_EX + '@4' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'acid':
+        screen[enemy4.ETile]['display'] = Fore.GREEN + '@4' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+      elif items[Player.weapon]['type'] == 'shock':
+        screen[enemy4.ETile]['display'] = Fore.BLUE + '@4' + Fore.RESET
+        os.system('cls')
+        print(Fore.BLUE + '--Player Turn--')
+        battlemap()
+
+
+      print('Hits for  ' + str(items[Player.weapon]['pow']))
+      halt()
+
+    elif com == 'f':
+      r = random.randint(1,3)
+      if r == 3:
+        print('Escape Failed!')
+        halt()
+      else:
+        print('Escape Sucessful! Combat ends after Enemy Turn')
+        halt()
+        Player.CRoom = Player.PreRoom
+        x = 1
+    elif com == 'q':
+      os.system('cls')
+
+
+
+      if enemy.down == 0 and enemy2.down == 0 and enemy3.down == 0 and enemy4.down == 0:
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy2  (2)          Enemy3  (3)          Enemy4  (4)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,4,enemy2,enemy3,enemy4)
+        elif com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,4,enemy,enemy3,enemy4)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,4,enemy,enemy2,enemy4)
+        elif com2 == '4':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy4,com,4,enemy,enemy2,enemy3)
+
+        else:
+          print('Not an option')
+          halt()      
+
+      elif enemy.down == 0 and enemy2.down == 0 and enemy3.down == 0 and enemy4.down == 1:
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy2  (2)          Enemy3  (3)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,3,enemy2,enemy3,enemy3)
+        elif com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,3,enemy,enemy3,enemy3)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,3,enemy,enemy2,enemy2)
+
+        else:
+          print('Not an option')
+          halt()      
+
+      elif enemy.down == 0 and enemy2.down == 0 and enemy3.down == 1 and enemy4.down == 0:
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy2  (2)          Enemy4  (4)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,3,enemy2,enemy4,enemy4)
+        elif com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,3,enemy,enemy4,enemy4)
+        elif com2 == '4':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy4,com,3,enemy,enemy2,enemy2)
+
+        else:
+          print('Not an option')
+          halt()      
+
+      elif enemy.down == 0 and enemy2.down == 1 and enemy3.down == 0 and enemy4.down == 0:
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy3  (3)          Enemy4  (4)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,3,enemy3,enemy4,enemy4)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,3,enemy,enemy4,enemy4)
+        elif com2 == '4':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy4,com,3,enemy,enemy3,enemy3)
+
+        else:
+          print('Not an option')
+          halt()      
+
+      elif enemy.down == 1 and enemy2.down == 0 and enemy3.down == 0 and enemy4.down == 0:
+        os.system('cls')
+        print('Enemy 2  (2)          Enemy3  (3)          Enemy4  (4)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,3,enemy3,enemy4,enemy4)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,3,enemy2,enemy4,enemy4)
+        elif com2 == '4':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy4,com,3,enemy2,enemy3,enemy3)
+
+        else:
+          print('Not an option')
+          halt()      
+
+      elif enemy.down == 1 and enemy2.down == 1 and enemy3.down == 0 and enemy4.down == 0: 
+        os.system('cls')
+        print('Enemy 3  (3)          Enemy4  (4)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,2,enemy4,enemy4,enemy4)
+        elif com2 == '4':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy4,com,2,enemy3,enemy3,enemy3)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy.down == 1 and enemy2.down == 0 and enemy3.down == 1 and enemy4.down == 0: 
+        os.system('cls')
+        print('Enemy 2  (2)          Enemy4  (4)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,2,enemy4,enemy4,enemy4)
+        elif com2 == '4':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy4,com,2,enemy2,enemy2,enemy2)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy.down == 1 and enemy2.down == 0 and enemy3.down == 0 and enemy4.down == 1: 
+        os.system('cls')
+        print('Enemy 2  (2)          Enemy3  (3)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,2,enemy3,enemy3,enemy3)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy.down == 0 and enemy2.down == 1 and enemy3.down == 1 and enemy4.down == 0: 
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy4  (4)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,2,enemy4,enemy4,enemy4)
+        elif com2 == '4':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy4,com,2,enemy,enemy,enemy)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy.down == 0 and enemy2.down == 1 and enemy3.down == 0 and enemy4.down == 1: 
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy3  (3)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,2,enemy3,enemy3,enemy3)
+        elif com2 == '3':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy3,com,2,enemy,enemy,enemy)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy.down == 0 and enemy2.down == 0 and enemy3.down == 1 and enemy4.down == 1: 
+        os.system('cls')
+        print('Enemy 1  (1)          Enemy2  (2)')
+        com2 = input('Which enemy is the target?  ')
+        if com2 == '1':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy,com,2,enemy2,enemy2,enemy2)
+        elif com2 == '2':
+          os.system('cls')
+          print(Fore.GREEN + 'Your spells are:\n')
+          spells()
+          com = input('\n\nWhich spell do you cast?  ')
+          spellAttack(enemy2,com,2,enemy,enemy,enemy)
+        else:
+          print('Not an option')
+          halt()
+
+      elif enemy2.down == 1 and enemy3.down == 1 and enemy4.down == 1:
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy,com,1,enemy,enemy,enemy)
+
+      elif enemy.down == 1 and enemy3.down == 1 and enemy4.down == 1:
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy2,com,1,enemy2,enemy2,enemy2)
+
+      elif enemy.down == 1 and enemy2.down == 1 and enemy4.down == 1:
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy3,com,1,enemy3,enemy3,enemy3)
+
+      elif enemy.down == 1 and enemy2.down == 1 and enemy3.down == 1:
+        os.system('cls')
+        print(Fore.GREEN + 'Your spells are:\n')
+        spells()
+        com = input('\n\nWhich spell do you cast?  ')
+        spellAttack(enemy4,com,1,enemy4,enemy4,enemy4)
+
+    elif com == 'e':
+      playerHeal()
+    else:
+      print('not an option')
+      halt()
+
+
+    if enemy.H <= 0 and enemy.DTXT == False:
+      os.system('cls')
+      print('Enemy 1 dies!')
+      halt()
+      screen[enemy.ETile]['display'] = '  '
+      enemy.down = 1
+      enemy.DTXT = True
+
+    if enemy2.H <= 0 and enemy2.DTXT == False:
+      os.system('cls')
+      print('Enemy 2 dies!')
+      halt()
+      screen[enemy2.ETile]['display'] = '  '
+      enemy2.down = 1
+      enemy2.DTXT = True
+
+    if enemy3.H <= 0 and enemy3.DTXT == False:
+      os.system('cls')
+      print('Enemy 3 dies!')
+      halt()
+      screen[enemy3.ETile]['display'] = Fore.BLACK + '@@'
+      enemy3.down = 1
+      enemy3.DTXT = True
+
+    if enemy4.H <= 0 and enemy4.DTXT == False:
+      os.system('cls')
+      print('Enemy 4 dies!')
+      halt()
+      screen[enemy4.ETile]['display'] = Fore.BLACK + '@@'
+      enemy4.down = 1
+      enemy4.DTXT = True
+
+    if enemy.down == 1 and enemy2.down == 1 and enemy3.down == 1 and enemy4.down == 1:
+      os.system('cls')
+      print('The Enemies are defeated!')
+      halt()
+      x = 1
+
+
+
+    os.system('cls')
+    if enemy.down == 0:
+      if enemy.WTimer == 0:
+        s = enemy.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+            s = 0
+          else:
+            screen[enemy.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy.ETile]['y'],screen[enemy.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy, 4, enemy2, enemy3, enemy4)
+            screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 1 MOVMENT--')
+            battlemap()
+            halt()          
+          s -= 1  
+        screen[enemy.ETile]['display'] = Fore.RED + '@1' + Fore.RESET
+        os.system('cls')
+      else:
+        print(Fore.WHITE + 'Enemy 1 is stuck!')
+        enemy.WTimer -= 1
+
+      print(Fore.RED + '--ENEMY 1 TURN--')
+      battlemap()
+      if Player.CTile == enemy.ETile + 20 or Player.CTile == enemy.ETile - 20 or Player.CTile == enemy.ETile + 1 or Player.CTile == enemy.ETile - 1 or Player.CTile == enemy.ETile +21 or Player.CTile == enemy.ETile -21 or Player.CTile == enemy.ETile +19 or Player.CTile == enemy.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 1 misses!')
+        else:
+          print(Fore.RED + 'Enemy 1 hits for ' + str(enemy.damage))
+          Player.H -= enemy.damage
+        print(Fore.RESET)
+      halt()
+    if enemy2.down == 0:
+      if enemy2.WTimer == 0:
+        s = enemy2.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+            s = 0
+          else:
+            screen[enemy2.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy2.ETile]['y'],screen[enemy2.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy2, 4, enemy, enemy3, enemy4)
+            screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 2 MOVMENT--')
+            battlemap()
+            halt()          
+          s -= 1  
+        screen[enemy2.ETile]['display'] = Fore.RED + '@2' + Fore.RESET
+        os.system('cls')
+      else:
+        print(Fore.WHITE + 'Enemy 2 is stuck!')
+        enemy2.WTimer -= 1
+
+      print(Fore.RED + '--ENEMY 2 TURN--')
+      battlemap()
+      if Player.CTile == enemy2.ETile + 20 or Player.CTile == enemy2.ETile - 20 or Player.CTile == enemy2.ETile + 1 or Player.CTile == enemy2.ETile - 1 or Player.CTile == enemy2.ETile +21 or Player.CTile == enemy2.ETile -21 or Player.CTile == enemy2.ETile +19 or Player.CTile == enemy2.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 2 misses!')
+        else:
+          print(Fore.RED + 'Enemy 2 hits for ' + str(enemy2.damage))
+          Player.H -= enemy2.damage
+        print(Fore.RESET)
+      halt()
+    if enemy3.down == 0:
+      if enemy3.WTimer == 0:
+        s = enemy3.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy3.ETile + 20 or Player.CTile == enemy3.ETile - 20 or Player.CTile == enemy3.ETile + 1 or Player.CTile == enemy3.ETile - 1 or Player.CTile == enemy3.ETile +21 or Player.CTile == enemy3.ETile -21 or Player.CTile == enemy3.ETile +19 or Player.CTile == enemy3.ETile -19:
+            s = 0
+          else:
+            screen[enemy3.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy3.ETile]['y'],screen[enemy3.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy3, 4, enemy, enemy2, enemy4)
+            screen[enemy3.ETile]['display'] = Fore.RED + '@3' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 3 MOVMENT--')
+            battlemap()
+            halt()          
+          s -= 1  
+        screen[enemy3.ETile]['display'] = Fore.RED + '@3' + Fore.RESET
+        os.system('cls')
+      else:
+        print(Fore.WHITE + 'Enemy 3 is stuck!')
+        enemy3.WTimer -= 1
+
+      print(Fore.RED + '--ENEMY 3 TURN--')
+      battlemap()
+      if Player.CTile == enemy3.ETile + 20 or Player.CTile == enemy3.ETile - 20 or Player.CTile == enemy3.ETile + 1 or Player.CTile == enemy3.ETile - 1 or Player.CTile == enemy3.ETile +21 or Player.CTile == enemy3.ETile -21 or Player.CTile == enemy3.ETile +19 or Player.CTile == enemy3.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 3 misses!')
+        else:
+          print(Fore.RED + 'Enemy 3 hits for ' + str(enemy3.damage))
+          Player.H -= enemy3.damage
+        print(Fore.RESET)
+      halt()
+    if enemy4.down == 0:
+      if enemy4.WTimer == 0:
+        s = enemy4.ESpeed
+        while s >= 1:
+          if Player.CTile == enemy4.ETile + 20 or Player.CTile == enemy4.ETile - 20 or Player.CTile == enemy4.ETile + 1 or Player.CTile == enemy4.ETile - 1 or Player.CTile == enemy4.ETile +21 or Player.CTile == enemy4.ETile -21 or Player.CTile == enemy4.ETile +19 or Player.CTile == enemy4.ETile -19:
+            s = 0
+          else:
+            screen[enemy4.ETile]['display'] = '  '
+            astar(rooms[Player.CRoom]['bmap'],(screen[enemy4.ETile]['y'],screen[enemy4.ETile]['x']),(screen[Player.CTile]['y'],screen[Player.CTile]['x']), enemy4, 4, enemy, enemy2, enemy3)
+            screen[enemy4.ETile]['display'] = Fore.RED + '@4' + Fore.RESET
+            os.system('cls')
+            print(Fore.RED + '--ENEMY 4 MOVMENT--')
+            battlemap()
+            halt()          
+          s -= 1  
+        screen[enemy4.ETile]['display'] = Fore.RED + '@4' + Fore.RESET
+        os.system('cls')
+      else:
+        print(Fore.WHITE + 'Enemy 4 is stuck!')
+        enemy4.WTimer -= 1
+
+      print(Fore.RED + '--ENEMY 4 TURN--')
+      battlemap()
+      if Player.CTile == enemy4.ETile + 20 or Player.CTile == enemy4.ETile - 20 or Player.CTile == enemy4.ETile + 1 or Player.CTile == enemy4.ETile - 1 or Player.CTile == enemy4.ETile +21 or Player.CTile == enemy4.ETile -21 or Player.CTile == enemy4.ETile +19 or Player.CTile == enemy4.ETile -19:
+        hit = random.randint(1,100)
+        hit -= items[Player.armour]['def']
+        if hit < 1:
+          print(Fore.GREEN + 'Enemy 4 misses!')
+        else:
+          print(Fore.RED + 'Enemy 4 hits for ' + str(enemy4.damage))
+          Player.H -= enemy4.damage
+        print(Fore.RESET)
+      halt()
+
+
+
+
+    os.system('cls')
+    if Player.H <= 0:
+      os.system('cls')
+      print('You Died!')
+      halt()
+      x = 1
 
 
 
@@ -2578,6 +3421,10 @@ def enc1(enemy):
     else:
      print('not an option')
      os.system('cls')
+    if enemy.down == 1:
+      Player.xp  += enemy.XP
+      print('Gained ' + str(enemy.XP) + 'XP points!')
+
  
 def enc2(enemy,enemy2):
   print('You encountered '+Fore.RED + enemy.name + ' and ' + enemy2.name)
@@ -2605,9 +3452,71 @@ def enc2(enemy,enemy2):
     else:
      print('not an option')
      os.system('cls')
+  if enemy.down == 1 and enemy2.down == 1:
+    Player.xp  += enemy.XP
+    print('Gained ' + str(enemy.XP) + 'XP points!')
 
 
+def enc3(enemy,enemy2,enemy3):
+  print('You encountered '+Fore.RED + enemy.name + '  ,  ' + enemy2.name + '  and  ' + enemy3.name)
+  x = 0
+  while x == 0:
+    com = input('What action:'+Fore.BLUE+' \nRun (r)\n'+Fore.RED+'Fight  (f)'+Fore.RESET+'\n\n')
 
+    if com == 'Run' or com == 'r':
+      r = random.randint(1,6)
+      if r != 6:
+        Player.CRoom = Player.PreRoom
+        print('Ran successfuly')
+        halt()
+        x = 1
+      else:
+        print('Failed, combat is engaged')
+        halt()
+        os.system('cls')
+        fight3(enemy, enemy2, enemy3)
+        x = 1
+    elif com == 'Fight' or com == 'f':
+      os.system('cls')
+      fight3(enemy, enemy2, enemy3)
+      x = 1
+    else:
+     print('not an option')
+     os.system('cls')
+  if enemy.down == 1 and enemy2.down == 1 and enemy3.down == 1:
+    Player.xp  += enemy.XP
+    print('Gained ' + str(enemy.XP) + 'XP points!')
+
+
+def enc4(enemy,enemy2,enemy3,enemy4):
+  print('You encountered '+Fore.RED + enemy.name + ',  ' + enemy2.name + ',  ' + enemy3.name + '   and  ' + enemy4.name)
+  x = 0
+  while x == 0:
+    com = input('What action:'+Fore.BLUE+' \nRun (r)\n'+Fore.RED+'Fight  (f)'+Fore.RESET+'\n\n')
+
+    if com == 'Run' or com == 'r':
+      r = random.randint(1,6)
+      if r != 6:
+        Player.CRoom = Player.PreRoom
+        print('Ran successfuly')
+        halt()
+        x = 1
+      else:
+        print('Failed, combat is engaged')
+        halt()
+        os.system('cls')
+        fight4(enemy, enemy2, enemy3, enemy4)
+        x = 1
+    elif com == 'Fight' or com == 'f':
+      os.system('cls')
+      fight4(enemy, enemy2, enemy3, enemy4)
+      x = 1
+    else:
+     print('not an option')
+     os.system('cls')
+  if enemy.down == 1 and enemy2.down == 1 and enemy3.down == 1 and enemy4.down == 1:
+    Player.xp  += enemy.XP
+    print('Gained ' + str(enemy.XP) + 'XP points!')
 
 
 
@@ -2643,14 +3552,14 @@ while y == 0:
     break
   resetcolours()
   rooms[Player.CRoom]['mmc'] = Fore.GREEN
-  if Enemy0A.down == 0:
+  if Enemy0A.down == 0 or Enemy0B.down == 0:
     rooms[Enemy0A.ERoom]['mmc'] = Fore.RED
   if Enemy1.down == 0:
     rooms[Enemy1.ERoom]['mmc'] = Fore.RED
-  if Enemy2.down == 0:
-    rooms[Enemy2.ERoom]['mmc'] = Fore.RED
-  if Enemy3.down == 0:
-    rooms[Enemy3.ERoom]['mmc'] = Fore.RED
+  if Enemy2A.down == 0 or Enemy2B.down == 0:
+    rooms[Enemy2A.ERoom]['mmc'] = Fore.RED
+  if Enemy3A.down == 0  or Enemy3B.down == 0:
+    rooms[Enemy3A.ERoom]['mmc'] = Fore.RED
   if Enemy4.down == 0:
     rooms[Enemy4.ERoom]['mmc'] = Fore.RED
   if Enemy5.down == 0:
@@ -2661,10 +3570,10 @@ while y == 0:
     rooms[Enemy7.ERoom]['mmc'] = Fore.RED
   if Enemy8.down == 0:
     rooms[Enemy8.ERoom]['mmc'] = Fore.RED
-  if Sen1.down == 0:
-    rooms[Sen1.ERoom]['mmc'] = Fore.RED
-  if Sen2.down == 0:
-    rooms[Sen2.ERoom]['mmc'] = Fore.RED
+  if Sen1A.down == 0 or Sen1B.down == 0 or Sen1C.down == 0 or Sen1D.down == 0:
+    rooms[Sen1A.ERoom]['mmc'] = Fore.RED
+  if Sen2A.down == 0 or Sen2B.down == 0 or Sen2C.down == 0:
+    rooms[Sen2A.ERoom]['mmc'] = Fore.RED
   
   if rooms[Player.CRoom]['minimap'] == 'ice':
     ice_caves()
@@ -2965,61 +3874,39 @@ while y == 0:
 
 
  
-  if Player.CRoom == Enemy0A.ERoom and Enemy0A.down == 0 and Enemy0B.down == 0:
+  if Player.CRoom == Enemy0A.ERoom and Enemy0A.down == 0 or  Player.CRoom == Enemy0A.ERoom and Enemy0B.down == 0:
     enc2(Enemy0A,Enemy0B)
-    Player.xp  += Enemy0A.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy0A.XP) + 'XP points!')
+
   if Player.CRoom == Enemy1.ERoom and Enemy1.down == 0:
     enc1(Enemy1)  
-    Player.xp  += Enemy1.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy1.XP) + 'XP points!')
-  if Player.CRoom == Enemy2.ERoom and Enemy2.down == 0:
-    enc1(Enemy2)  
-    Player.xp  += Enemy2.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy2.XP) + 'XP points!')
-  if Player.CRoom == Enemy3.ERoom and Enemy3.down == 0:
-    enc1(Enemy3)  
-    Player.xp  += Enemy3.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy3.XP) + 'XP points!')
+
+  if Player.CRoom == Enemy2A.ERoom and Enemy2A.down == 0 or Player.CRoom == Enemy2A.ERoom and Enemy2B.down == 0:
+    enc2(Enemy2A,Enemy2B)  
+
+  if Player.CRoom == Enemy3A.ERoom and Enemy3A.down == 0 and Player.CRoom == Enemy3A.ERoom and Enemy3B.down == 0:
+    enc2(Enemy3A,Enemy3B)  
+
   if Player.CRoom == Enemy4.ERoom and Enemy4.down == 0:
     enc1(Enemy4)  
-    Player.xp  += Enemy4.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy4.XP) + 'XP points!')
+
   if Player.CRoom == Enemy5.ERoom and Enemy5.down == 0:
     enc1(Enemy5)  
-    Player.xp  += Enemy5.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy5.XP) + 'XP points!')
+
   if Player.CRoom == Enemy6.ERoom and Enemy6.down == 0:
     enc1(Enemy6)  
-    Player.xp  += Enemy6.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy6.XP) + 'XP points!')
+
   if Player.CRoom == Enemy7.ERoom and Enemy7.down == 0:
     enc1(Enemy7)  
-    Player.xp  += Enemy7.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy7.XP) + 'XP points!')
+
   if Player.CRoom == Enemy8.ERoom and Enemy8.down == 0:
     enc1(Enemy8)  
-    Player.xp  += Enemy8.XP
-    os.system('cls')
-    print('Gained ' + str(Enemy8.XP) + 'XP points!')
-  if Player.CRoom == Sen1.ERoom and Sen1.down == 0:
-    enc1(Sen1) 
-    Player.xp  += Sen1.XP
-    os.system('cls')
-    print('Gained ' + str(Sen1.XP) + 'XP points!')
-  if Player.CRoom == Sen2.ERoom and Sen2.down == 0:
-    enc1(Sen2) 
-    Player.xp  += Sen2.XP
-    os.system('cls')
-    print('Gained ' + str(Sen2.XP) + 'XP points!')
+
+  if Player.CRoom == Sen1A.ERoom and Sen1A.down == 0 or Player.CRoom == Sen1B.ERoom and Sen1B.down == 0 or Player.CRoom == Sen1C.ERoom and Sen1C.down == 0 or Player.CRoom == Sen1D.ERoom and Sen1D.down == 0:
+    enc4(Sen1A,Sen1B,Sen1C,Sen1D) 
+ 
+  if Player.CRoom == Sen2A.ERoom and Sen2A.down == 0 or Player.CRoom == Sen2A.ERoom and Sen2B.down == 0 or Player.CRoom == Sen2A.ERoom and Sen2C.down == 0:
+    enc3(Sen2A,Sen2B,Sen2C) 
+
 
 
 
@@ -3071,5 +3958,3 @@ while y == 0:
       else:
         print(Fore.RED + 'A key is needed for this path\n')
         print(Fore.RESET)
-
-
